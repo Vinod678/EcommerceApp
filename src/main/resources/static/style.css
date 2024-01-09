@@ -1,0 +1,147 @@
+/* Style for the modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1;
+    max-width: 400px; /* Set the maximum width of the modal */
+    width: 100%; /* Make the modal responsive */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the close button */
+#closeModal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    color: #555;
+}
+
+/* Style for the form labels and inputs */
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+/* Style for the overlay */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+/* Style for each product card */
+.product-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the "Add Product" button */
+#addProductBtn {
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#addProductBtn:hover {
+    background-color: #45a049;
+}
+
+/* Style for the "Delete All Products" button */
+#deleteAllProductBtn {
+    padding: 10px;
+    background-color: #45a049;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#deleteAllProductBtn:hover {
+    background-color: red;
+}
+#productList {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            padding: 1em;
+            list-style: none;
+        }
+
+
+
+
+/* Style for the Delete Product By Id modal */
+.deleteModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1;
+    max-width: 400px; /* Set the maximum width of the modal */
+    width: 100%; /* Make the modal responsive */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the close button */
+#closeProductModal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    color: #555;
+}
+
+#deleteProductByIdBtn {
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#deleteProductByIdBtn:hover {
+    background-color: #45a049;
+}
+
+#productList .product-card h2{
+font-size:20px;
+color:red;
+text-align:center;
+}
+#productList .product-card img{
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 50%;
+}
