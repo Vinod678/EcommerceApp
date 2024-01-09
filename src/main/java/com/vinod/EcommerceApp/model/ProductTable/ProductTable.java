@@ -1,32 +1,33 @@
 package com.vinod.EcommerceApp.model.ProductTable;
 
-import com.vinod.EcommerceApp.model.CartTable.cartTable;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.vinod.EcommerceApp.model.CartTable.CartTable;
+import jakarta.persistence.*;
 
 import java.util.Set;
 
 @Entity
 public class ProductTable {
     @Id
-    @Column(name="productID")
+    @Column(name = "productID")
     private String productID;
     private String productName;
     private String productDescription;
     private String productPrice;
-    private String noOfProductsAvaiable;
+    private int noOfProductsAvailable;
     private String productImage;
 
-    @ManyToMany(mappedBy = "productTable")
-    private Set<cartTable> carts;
 
-    public Set<cartTable> getCarts() {
+    @ManyToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private Set<CartTable> carts;
+
+
+    public Set<CartTable> getCarts() {
         return carts;
     }
 
-    public void setCarts(Set<cartTable> carts) {
+    public void setCarts(Set<CartTable> carts) {
         this.carts = carts;
     }
 
@@ -70,11 +71,11 @@ public class ProductTable {
         this.productPrice = productPrice;
     }
 
-    public String getNoOfProductsAvaiable() {
-        return noOfProductsAvaiable;
+    public int getNoOfProductsAvailable() {
+        return noOfProductsAvailable;
     }
 
-    public void setNoOfProductsAvaiable(String noOfProductsAvaiable) {
-        this.noOfProductsAvaiable = noOfProductsAvaiable;
+    public void setNoOfProductsAvailable(int noOfProductsAvailable) {
+        this.noOfProductsAvailable = noOfProductsAvailable;
     }
 }

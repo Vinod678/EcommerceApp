@@ -7,10 +7,18 @@ import jakarta.persistence.Id;
 public class originModel {
     @Id
     private String productTable;
-    private String categoryTable;
+    private String cartTable;
     private String orderTable;
     private String customerTable;
     private String paymentReceiptsTable;
+
+    public String getCartTable() {
+        return cartTable;
+    }
+
+    public void setCartTable(String cartTable) {
+        this.cartTable = cartTable;
+    }
 
     public String getProductTable() {
         return productTable;
@@ -20,13 +28,6 @@ public class originModel {
         this.productTable = productTable;
     }
 
-    public String getCategoryTable() {
-        return categoryTable;
-    }
-
-    public void setCategoryTable(String categoryTable) {
-        this.categoryTable = categoryTable;
-    }
 
     public String getOrderTable() {
         return orderTable;
