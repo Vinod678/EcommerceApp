@@ -35,4 +35,9 @@ public class CartController {
         cartTableService.clearCart();
         return ResponseEntity.ok("Cart cleared successfully");
     }
+    @DeleteMapping("/clearCartItem/{cartID}")
+    public ResponseEntity<String> clearCartItem(@PathVariable Long cartID) {
+        cartTableService.clearCartSingleItem(cartID);
+        return ResponseEntity.ok("Cart item cleared successfully");
+    }
 }

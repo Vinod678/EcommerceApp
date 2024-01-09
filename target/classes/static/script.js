@@ -172,3 +172,37 @@ fetch('http://localhost:8080/products/'+id ,{
     });
 
 }
+
+
+
+//Cart Products Table will display
+document.addEventListener("DOMContentLoaded", function() {
+    // Fetch products from the backend
+    fetch('http://localhost:8080/cart/getAllCartItems')
+        .then(response => response.json())
+        .then(products => {
+            // Update the UI with the product list
+            const productList = document.getElementById('cartList');
+
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                const productCardImg = document.createElement('div')
+                const img = document.createElement('img');
+                const h2 = document.createElement('h2');
+
+                img.src =product.product.productImage;
+//                ${cartItem.product.productName}
+                img.width='140';
+                img.height='60';
+                img.align='center';
+
+                productCard.className = 'product-card';
+                productCard.appendChild(img);
+
+                productCard.innerHTML += `<p>${product.cartID}</p><p>${product.product.productID}</p><p>  ${product.product.productName}</p><p> Cost: ${product.product.productPrice}</p><p> Quantity: ${product.quantity}</p>`;
+                productCard.innerHTML += `<button>${"Remove From Cart"}</button>`;
+                productList.appendChild(productCard);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+});

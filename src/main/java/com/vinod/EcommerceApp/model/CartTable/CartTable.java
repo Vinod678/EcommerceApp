@@ -1,12 +1,15 @@
 package com.vinod.EcommerceApp.model.CartTable;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.vinod.EcommerceApp.model.ProductTable.ProductTable;
 import jakarta.persistence.*;
 
 
 @Entity
 @Table(name = "cartTable")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "cartID")
 public class CartTable {
 
     @Id
@@ -16,7 +19,6 @@ public class CartTable {
 
     @ManyToOne
     @JoinColumn(name = "productID", nullable = false)
-    @JsonManagedReference
     private ProductTable product;
 
     @Column(name = "quantity")

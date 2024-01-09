@@ -24,6 +24,11 @@ public class CartTableServiceImpl implements CartTableService {
     }
 
     @Override
+    public void clearCartSingleItem(Long cartID) {
+        cartRepository.deleteById(cartID);
+    }
+
+    @Override
     public void clearCart() {
         cartRepository.deleteAll();
     }

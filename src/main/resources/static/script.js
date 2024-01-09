@@ -19,7 +19,7 @@
 //});
 
 //Products Table available
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Fetch products from the backend
     fetch('http://localhost:8080/products')
         .then(response => response.json())
@@ -29,40 +29,52 @@ document.addEventListener("DOMContentLoaded", function() {
 
             products.forEach(product => {
                 const productCard = document.createElement('div');
-                const productCardImg = document.createElement('div')
+                const productCardImg = document.createElement('div');
                 const img = document.createElement('img');
-                const h1 = document.createElement('h2');
-//                <h1 style="text-align:right; color:blue ; text-decoration:underline">Cart</h1>
-                img.src =product.productImage;
-                img.width='140';
-                img.height='60';
-                img.align='center';
-                //document.getElementById('productCard').appendChild(img);
-//                const productCard1 = document.createElement('h1');
-//                const productCard2 = document.createElement('h1');
-//                const productCard3 = document.createElement('h1');
-                productCard.className = 'product-card';
-//                productCardImg.className = 'product-cardImg';
-//                productCard.className = 'product-card1';
+                const h2 = document.createElement('h2');
+                const addButton = document.createElement('button');
 
-//                productCard.textContent = `${product.productID}  ${product.productName} - Cost: ${product.productPrice} - Quantity: ${product.noOfProductsAvaiable} ${product.productImage}`;
-                //productCardImg.textContent = `${product.productImage}`;
-//                productCard2.textContent = `${product.productName}`;
-//                productCard3.textContent = `${product.productDescription}`;
+                img.src = product.productImage;
+                img.width = '140';
+                img.height = '60';
+                img.align = 'center';
+
+                productCard.className = 'product-card';
                 productCard.appendChild(img);
-//                productCard.innerHTML += `<p>${product.productID}  ${product.productName} - Cost: ${product.productPrice} - Quantity: ${product.noOfProductsAvaiable}</p>`;
-                productCard.innerHTML += `<p>${product.productID}</p><p>  ${product.productName}</p><p> Cost: ${product.productPrice}</p><p> Quantity: ${product.noOfProductsAvaiable}</p>`;
-                productCard.innerHTML += `<h2>${"Add to cart"}</h2>`;
-//                productCard.innerHTML += `<p>${Quantity: ${product.noOfProductsAvaiable}</p>`;
+
+                productCard.innerHTML += `<p>${product.productID}</p><p>  ${product.productName}</p><p> Cost: ${product.productPrice}</p><p> Quantity: ${product.noOfProductsAvailable}</p>`;
+
+                addButton.innerText = 'Add To Cart';
+                addButton.addEventListener('click', () => {
+                    addToCartItem(product.productID);
+                });
+
+                productCard.appendChild(addButton);
                 productList.appendChild(productCard);
-                //productList.appendChild(productCardImg);
-//                productList.appendChild(productCard1);
-//                productList.appendChild(productCard2);
-//                productList.appendChild(productCard3);
             });
         })
         .catch(error => console.error('Error:', error));
+
+    function addToCartItem(productID) {
+        // Make a POST request to add the item to the cart
+        fetch('http://localhost:8080/cart/addToCart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                product: {
+                    productID: productID,
+                },
+                quantity: 1, // You can set the quantity as needed
+            }),
+        })
+            .then(response => response.json())
+            .then(data => console.log('Item added to cart:', data))
+            .catch(error => console.error('Error adding item to cart:', error));
+    }
 });
+
 
 // Display the modal when the "Add Product" button is clicked
 //const addProductBtn = document.getElementById('addProductBtn');
@@ -172,3 +184,55 @@ fetch('http://localhost:8080/products/'+id ,{
     });
 
 }
+
+
+
+//Cart Products Table will display
+document.addEventListener("DOMContentLoaded", function () {
+    const productList = document.getElementById('cartList');
+
+    // Fetch products from the backend
+    fetch('http://localhost:8080/cart/getAllCartItems')
+        .then(response => response.json())
+        .then(products => {
+            // Update the UI with the product list
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                const productCardImg = document.createElement('div')
+                const img = document.createElement('img');
+                const h2 = document.createElement('h2');
+                const removeButton = document.createElement('button');
+
+                img.src = product.product.productImage;
+                img.width = '140';
+                img.height = '60';
+                img.align = 'center';
+
+                productCard.className = 'product-card';
+                productCard.appendChild(img);
+
+                productCard.innerHTML += `<p>${product.cartID}</p><p>${product.product.productID}</p><p>  ${product.product.productName}</p><p> Cost: ${product.product.productPrice}</p><p> Quantity: ${product.quantity}</p>`;
+
+                removeButton.innerText = 'Remove From Cart';
+                removeButton.addEventListener('click', () => {
+                    removeCartItem(product.cartID);
+                    // Remove the product card from the UI
+                    productCard.remove();
+                });
+
+                productCard.appendChild(removeButton);
+                productList.appendChild(productCard);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+
+    function removeCartItem(cartID) {
+        // Make a DELETE request to remove the item from the cart
+        fetch(`http://localhost:8080/cart/clearCartItem/${cartID}`, {
+            method: 'DELETE',
+        })
+            .then(response => response.json())
+            .then(data => console.log('Item removed from cart:', data))
+            .catch(error => console.error('Error removing item from cart:', error));
+    }
+});
