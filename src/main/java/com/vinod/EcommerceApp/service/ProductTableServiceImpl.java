@@ -35,6 +35,11 @@ public class ProductTableServiceImpl implements ProductTableService {
     }
 
     @Override
+    public ProductTable getProductById(int id) {
+        return productTableRepository.findById(int productID);
+    }
+
+    @Override
     public List<ProductTable> getProductTables() {
         return productTableRepository.findAll();
     }

@@ -1,8 +1,12 @@
 package com.vinod.EcommerceApp.model.ProductTable;
 
+import com.vinod.EcommerceApp.model.CartTable.cartTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+
+import java.util.Set;
 
 @Entity
 public class ProductTable {
@@ -14,6 +18,17 @@ public class ProductTable {
     private String productPrice;
     private String noOfProductsAvaiable;
     private String productImage;
+
+    @ManyToMany(mappedBy = "productTable")
+    private Set<cartTable> carts;
+
+    public Set<cartTable> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(Set<cartTable> carts) {
+        this.carts = carts;
+    }
 
     public String getProductImage() {
         return productImage;

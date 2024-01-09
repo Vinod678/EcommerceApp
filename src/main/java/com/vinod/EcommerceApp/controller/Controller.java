@@ -1,6 +1,8 @@
 package com.vinod.EcommerceApp.controller;
+import com.vinod.EcommerceApp.model.CartTable.cartTable;
 import com.vinod.EcommerceApp.model.Product;
 import com.vinod.EcommerceApp.model.ProductTable.ProductTable;
+import com.vinod.EcommerceApp.service.CartService;
 import com.vinod.EcommerceApp.service.ProductService;
 import com.vinod.EcommerceApp.service.ProductTableService;
 import org.apache.coyote.Response;
@@ -8,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.Repository;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -115,6 +118,31 @@ public class Controller {
     public List<Product> getAllProductsSortedById(){
         return productService.getAllProductsSortedById();
     }
+
+
+
+    // CartController.java
+
+    @RestController
+    @RequestMapping("/cart")
+    public class CartController {
+
+        @Autowired
+        private CartService cartService;
+
+        @PostMapping("/add")
+        public ResponseEntity<String> addToCart(@RequestBody cartTable cartRequest) {
+            // Assume CartRequest contains productId and quantity
+            ProductTable product = productService.getProductById(cartRequest.get());
+            if (product != null) {
+                cartService.addToCart(product, cartRequest.getQuantity());
+                return ResponseEntity.ok("Product added to cart successfully.");
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found.");
+            }
+        }
+    }
+
 
 
 

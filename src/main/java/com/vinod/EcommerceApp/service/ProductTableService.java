@@ -10,4 +10,5 @@ public interface ProductTableService {
     List<ProductTable> getProductTables();
     void createProductsTable(List<ProductTable> productTable);
     void deleteProductsTable();
+    ProductTable getProductById(int id);
 }
