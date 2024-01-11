@@ -9,5 +9,6 @@ public interface ProductTableService {
     List<ProductTable> getProduct();
     void createProducts(List<ProductTable> productTable);
     void deleteProductsTable();
+    List<ProductTable> searchProducts(String query);
 
 }

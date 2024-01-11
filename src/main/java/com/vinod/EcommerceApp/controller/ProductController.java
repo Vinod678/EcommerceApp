@@ -51,5 +51,11 @@ public class ProductController {
         return ResponseEntity.ok("All produts delted Successfully");
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<ProductTable>> searchProducts(@RequestParam("query") String query) {
+        List<ProductTable> searchResults = productTableService.searchProducts(query);
+        return ResponseEntity.ok(searchResults);
+    }
+
 
 }

@@ -32,6 +32,11 @@ public class ProductTableServiceImpl implements ProductTableService {
         productTableRepository.deleteAll();
     }
 
+    @Override
+    public List<ProductTable> searchProducts(String query) {
+        return productTableRepository.searchProducts(query);
+    }
+
 
     @Override
     public List<ProductTable> getProduct() {
