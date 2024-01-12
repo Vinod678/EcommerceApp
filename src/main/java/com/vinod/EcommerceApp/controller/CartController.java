@@ -2,6 +2,8 @@ package com.vinod.EcommerceApp.controller;
 
 import com.vinod.EcommerceApp.service.CartTableService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.vinod.EcommerceApp.model.CartTable.CartTable;
@@ -27,7 +29,16 @@ public class CartController {
     @GetMapping("/getAllCartItems")
     public ResponseEntity<List<CartTable>> getAllCartItems() {
         List<CartTable> cartItems = cartTableService.getAllCartItems();
-        return ResponseEntity.ok(cartItems);
+        // Calculate total count
+        int totalCount = 0;
+        for (CartTable cartItem : cartItems) {
+            totalCount += cartItem.getQuantity();
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("X-Total-Count", String.valueOf(totalCount));
+        //return ResponseEntity.ok(cartItems);
+        return new ResponseEntity<>(cartItems, headers, HttpStatus.OK);
     }
 
     @DeleteMapping("/clearCart")

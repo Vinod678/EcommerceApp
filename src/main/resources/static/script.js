@@ -1,47 +1,67 @@
-
 //Products Table available
 document.addEventListener("DOMContentLoaded", function () {
-    // Fetch products from the backend
-    fetch('http://localhost:8080/products')
-        .then(response => response.json())
-        .then(products => {
-            // Update the UI with the product list
-            const productList = document.getElementById('productList');
+    const productList = document.getElementById('productList');
+    const searchForm = document.querySelector('form');
 
-            products.forEach(product => {
-                const productCard = document.createElement('div');
-                const productCardImg = document.createElement('div');
-                const img = document.createElement('img');
-                const h2 = document.createElement('h2');
-                const addButton = document.createElement('button');
-                const orderButton = document.createElement('button');
+    // Fetch all products initially
+    fetchProducts();
 
-                img.src = product.productImage;
-                img.width = '140';
-                img.height = '60';
-                img.align = 'center';
+    searchForm.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-                productCard.className = 'product-card';
-                productCard.appendChild(img);
+        const searchInput = document.getElementById('searchProduct');
+        const query = searchInput.value;
 
-                productCard.innerHTML += `<p>${product.productID}</p><p>  ${product.productName}</p><p> Cost: ${product.productPrice}</p><p> Quantity: ${product.noOfProductsAvailable}</p>`;
+        // Fetch products based on the search query
+        fetchProducts(query);
+    });
 
-                addButton.innerText = 'Add To Cart';
-                orderButton.innerText = 'Buy';
-                addButton.addEventListener('click', () => {
-                    addToCartItem(product.productID);
+    function fetchProducts(query = '') {
+        // Clear the existing product list
+        productList.innerHTML = '';
+
+        // Fetch products from the backend
+        const apiUrl = query ? `http://localhost:8080/products/search?query=${query}` : 'http://localhost:8080/products';
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(products => {
+                // Update the UI with the product list
+                products.forEach(product => {
+                    const productCard = document.createElement('div');
+                    const productCardImg = document.createElement('div');
+                    const img = document.createElement('img');
+                    const h2 = document.createElement('h2');
+                    const addButton = document.createElement('button');
+                    const orderButton = document.createElement('button');
+
+                    img.src = product.productImage;
+                    img.width = '140';
+                    img.height = '60';
+                    img.align = 'center';
+
+                    productCard.className = 'product-card';
+                    productCard.appendChild(img);
+
+                    productCard.innerHTML += `<p>${product.productID}</p><p>  ${product.productName}</p><p> Cost: ${product.productPrice}</p><p> Quantity: ${product.noOfProductsAvailable}</p>`;
+
+                    addButton.innerText = 'Add To Cart';
+                    orderButton.innerText = 'Buy';
+                    addButton.addEventListener('click', () => {
+                        addToCartItem(product.productID);
+                    });
+
+                    orderButton.addEventListener('click', function(){
+                        window.location.href = "http://localhost:63342/EcommerceApp/static/orderItem.html";
+                    });
+
+                    productCard.appendChild(addButton);
+                    productCard.appendChild(orderButton);
+                    productList.appendChild(productCard);
                 });
-
-                orderButton.addEventListener('click', function(){
-                    window.location.href = "http://localhost:63342/EcommerceApp/static/orderItem.html";
-                });
-
-                productCard.appendChild(addButton);
-                productCard.appendChild(orderButton);
-                productList.appendChild(productCard);
-            });
-        })
-        .catch(error => console.error('Error:', error));
+            })
+            .catch(error => console.error('Error:', error));
+    }
 
     function addToCartItem(productID) {
         // Make a POST request to add the item to the cart
@@ -62,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error('Error adding item to cart:', error));
     }
 });
+
 
 
 //Cart Products Table will display
@@ -116,3 +137,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('http://localhost:8080/cart/getAllCartItems')
+      .then(response => response.json())
+      .then(data => {
+        // Calculate total count
+        const totalCount = data.reduce((acc, item) => acc + item.quantity, 0);
+
+        // Update the content of the HTML element
+        const totalItemsElement = document.getElementById('totalItems');
+        totalItemsElement.textContent = `Total Items In Cart - ${totalCount}`;
+      })
+      .catch(error => console.error('Error:', error));
+});
+
+
+
+// Function to Delete All Products
+ function deleteAllProducts() {
+        fetch('http://localhost:8080/cart/clearCart', {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+                location.reload();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
