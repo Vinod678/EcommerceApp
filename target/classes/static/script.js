@@ -52,8 +52,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
 
                     orderButton.addEventListener('click', function(){
-                        window.location.href = "http://localhost:63342/EcommerceApp/static/orderItem.html";
-                    });
+                                            // Construct the URL with product details as query parameters
+                                            const orderItemUrl = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.productID}&productName=${encodeURIComponent(product.productName)}&productPrice=${product.productPrice}&quantity=${product.noOfProductsAvailable}`;
+                                            window.location.href = orderItemUrl;
+                                        });
 
                     productCard.appendChild(addButton);
                     productCard.appendChild(orderButton);
@@ -100,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const img = document.createElement('img');
                 const h2 = document.createElement('h2');
                 const removeButton = document.createElement('button');
+                const orderButton = document.createElement('button');
 
                 img.src = product.product.productImage;
                 img.width = '140';
@@ -112,13 +115,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 productCard.innerHTML += `<p>${product.cartID}</p><p>${product.product.productID}</p><p>  ${product.product.productName}</p><p> Cost: ${product.product.productPrice}</p><p> Quantity: ${product.quantity}</p>`;
 
                 removeButton.innerText = 'Remove From Cart';
+                orderButton.innerText = 'Buy';
                 removeButton.addEventListener('click', () => {
                     removeCartItem(product.cartID);
                     // Remove the product card from the UI
                     productCard.remove();
                 });
 
+                orderButton.addEventListener('click', function(){
+                     // Construct the URL with product details as query parameters
+                     const orderItemUrl_1 = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.productID}&productName=${encodeURIComponent(product.productName)}&productPrice=${product.productPrice}&quantity=${product.noOfProductsAvailable}`;
+                     window.location.href = orderItemUrl_1;
+                 });
+
+
+
                 productCard.appendChild(removeButton);
+                productCard.appendChild(orderButton);
                 productList.appendChild(productCard);
             });
         })
@@ -141,20 +154,73 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function() {
     fetch('http://localhost:8080/cart/getAllCartItems')
-      .then(response => {
-        // Retrieve the total count from the headers
-        const totalCountHeader = response.headers.get('X-Total-Count');
+      .then(response => response.json())
+      .then(data => {
+        // Calculate total count
+        const totalCount = data.reduce((acc, item) => acc + item.quantity, 0);
 
         // Update the content of the HTML element
         const totalItemsElement = document.getElementById('totalItems');
-        totalItemsElement.textContent = `Total Items In Cart - ${totalCountHeader}`;
-
-        // Parse the JSON response
-        return response.json();
-      })
-      .then(data => {
-        // Process the data
-        console.log('Cart Items:', data);
+        totalItemsElement.textContent = `Total Items In Cart - ${totalCount}`;
       })
       .catch(error => console.error('Error:', error));
 });
+
+
+
+// Function to Delete All Products
+ function deleteAllProducts() {
+        fetch('http://localhost:8080/cart/clearCart', {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+                location.reload();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+
+
+
+//To display order details
+document.addEventListener("DOMContentLoaded", function() {
+            // Function to retrieve query parameters from the URL
+            function getQueryParam(name) {
+                const urlSearchParams = new URLSearchParams(window.location.search);
+                return urlSearchParams.get(name);
+            }
+
+            // Retrieve product details from query parameters
+            const productId = getQueryParam('productId');
+            const productName = getQueryParam('productName');
+            const productPrice = getQueryParam('productPrice');
+            const quantity = getQueryParam('quantity');
+
+            // Display product details on the page
+            const productDetailsElement = document.getElementById('productDetails');
+            productDetailsElement.innerHTML = `
+                <p>Product ID: ${productId}</p>
+                <p>Product Name: ${productName}</p>
+                <p>Product Price: ${productPrice}</p>
+                <p>Quantity: ${quantity}</p>
+            `;
+
+            console.log('Product ID:', productId);
+            console.log('Product Name:', productName);
+            console.log('Product Price:', productPrice);
+            console.log('Quantity:', quantity);
+
+
+            // Button click event to place the order (add your logic here)
+            const placeOrderButton = document.getElementById('placeOrderButton');
+            placeOrderButton.addEventListener('click', function() {
+                // Add your logic to place the order
+                alert('Order placed successfully!');
+            });
+        });
