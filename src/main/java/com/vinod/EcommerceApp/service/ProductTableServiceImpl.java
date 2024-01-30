@@ -16,11 +16,8 @@ public class ProductTableServiceImpl implements ProductTableService {
     @Override
     public void createProduct(ProductTable productTable) {
         //logger.info("Product Table Created : " + productTable);
-
         validateProductData(productTable);
-
-        performBusinessLogic(productTable);
-
+        duplicates(productTable);
         productTableRepository.save(productTable);
     }
     private void validateProductData(ProductTable productTable) {
@@ -35,7 +32,7 @@ public class ProductTableServiceImpl implements ProductTableService {
         }
     }
 
-    private void performBusinessLogic(ProductTable productTable) {
+    private void duplicates(ProductTable productTable) {
         String productId = productTable.getProductID();
         if (productTableRepository.existsById(Integer.valueOf(productId))) {
             throw new IllegalArgumentException("Product with ID " + productId + " already exists");

@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="Login and register APIS">
+    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="ProductControllerTest and ProductTableServiceImpl business logic implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/repository/CartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/repository/CartRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/ProductTableServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/ProductTableServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/vinod/EcommerceApp/ManufactureCompanyApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/vinod/EcommerceApp/EcommerceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/controller/CartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/controller/CartController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/repository/CartRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/repository/CartRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/CartTableServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/CartTableServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/ProductTableServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/ProductTableServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/vinod/EcommerceApp/ProductControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/vinod/EcommerceApp/ProductControllerTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,10 +150,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.EcommerceApplication" />
+        <item itemvalue="JUnit.ProductControllerTest.testGetProducts" />
         <item itemvalue="JUnit.ProductControllerTest.testSearchProducts" />
         <item itemvalue="JUnit.ProductControllerTest" />
         <item itemvalue="JUnit.EcommerceApplicationTests" />
-        <item itemvalue="JUnit.ProductControllerTest.testGetProducts" />
       </list>
     </recent_temporary>
   </component>
@@ -203,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705057872029</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="ProductControllerTest and ProductTableServiceImpl business logic implemented">
+      <created>1706595305049</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1706595305049</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -237,14 +249,15 @@
     <MESSAGE value="Shopping cart adding" />
     <MESSAGE value="Shopping cart : addToCart, getAllCartItems,clearCart" />
     <MESSAGE value="Clear Cart and Cart count added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clear Cart and Cart count added" />
+    <MESSAGE value="ProductControllerTest and ProductTableServiceImpl business logic implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="ProductControllerTest and ProductTableServiceImpl business logic implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/CartController.java</url>
-          <line>29</line>
+          <line>42</line>
           <properties class="com.vinod.EcommerceApp.controller.CartController" method="getAllCartItems">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -253,7 +266,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java</url>
-          <line>21</line>
+          <line>45</line>
           <properties class="com.vinod.EcommerceApp.service.CartTableServiceImpl" method="getAllCartItems">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -262,7 +275,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java</url>
-          <line>22</line>
+          <line>46</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
