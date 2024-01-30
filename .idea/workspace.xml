@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="Clear Cart and Cart count added">
+    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="Login and register APIS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/orderItem.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/orderItem.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/orderItem.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/orderItem.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/ProductTableServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/ProductTableServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/vinod/EcommerceApp/ManufactureCompanyApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/vinod/EcommerceApp/EcommerceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/ProductTableServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/ProductTableServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +66,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.EcommerceApplication">
     <configuration name="EcommerceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.vinod.EcommerceApp.EcommerceApplication" />
       <module name="EcommerceApp" />
@@ -82,9 +80,75 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="EcommerceApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EcommerceApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vinod.EcommerceApp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vinod.EcommerceApp" />
+      <option name="MAIN_CLASS_NAME" value="com.vinod.EcommerceApp.EcommerceApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EcommerceApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vinod.EcommerceApp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vinod.EcommerceApp" />
+      <option name="MAIN_CLASS_NAME" value="com.vinod.EcommerceApp.ProductControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductControllerTest.testGetProducts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EcommerceApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vinod.EcommerceApp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vinod.EcommerceApp" />
+      <option name="MAIN_CLASS_NAME" value="com.vinod.EcommerceApp.ProductControllerTest" />
+      <option name="METHOD_NAME" value="testGetProducts" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductControllerTest.testSearchProducts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EcommerceApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vinod.EcommerceApp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vinod.EcommerceApp" />
+      <option name="MAIN_CLASS_NAME" value="com.vinod.EcommerceApp.ProductControllerTest" />
+      <option name="METHOD_NAME" value="testSearchProducts" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.EcommerceApplication" />
+        <item itemvalue="JUnit.ProductControllerTest.testSearchProducts" />
+        <item itemvalue="JUnit.ProductControllerTest" />
+        <item itemvalue="JUnit.EcommerceApplicationTests" />
+        <item itemvalue="JUnit.ProductControllerTest.testGetProducts" />
       </list>
     </recent_temporary>
   </component>

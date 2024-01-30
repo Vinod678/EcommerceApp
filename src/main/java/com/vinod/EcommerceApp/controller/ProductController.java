@@ -5,6 +5,7 @@ import com.vinod.EcommerceApp.service.ProductTableService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,10 +39,16 @@ public class ProductController {
 
     @PostMapping("/createProducts")
     public ResponseEntity<?> createProducts(@RequestBody List<ProductTable> productTables) {
-        // Handle the list of products
-        logger.info("Received request to create products: {}", productTables);
-        productTableService.createProducts(productTables);
-        return ResponseEntity.ok("Products created successfully");
+        try {
+            logger.info("Received request to create products: {}", productTables);
+            productTableService.createProducts(productTables);
+            return ResponseEntity.ok("Products created successfully");
+        } catch (IllegalArgumentException ex) {
+            // Catch the IllegalArgumentException and return a custom error response
+            logger.info("Error: " + ex.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error: " + ex.getMessage());
+        }
     }
 
 

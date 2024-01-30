@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     orderButton.addEventListener('click', function(){
                                             // Construct the URL with product details as query parameters
-                                            const orderItemUrl = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.productID}&productName=${encodeURIComponent(product.productName)}&productPrice=${product.productPrice}&quantity=${product.noOfProductsAvailable}`;
+                                            const orderItemUrl = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.productID}&productName=${encodeURIComponent(product.productName)}&productPrice=${product.productPrice}`;
                                             window.location.href = orderItemUrl;
                                         });
 
@@ -115,20 +115,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 productCard.innerHTML += `<p>${product.cartID}</p><p>${product.product.productID}</p><p>  ${product.product.productName}</p><p> Cost: ${product.product.productPrice}</p><p> Quantity: ${product.quantity}</p>`;
 
                 removeButton.innerText = 'Remove From Cart';
-                orderButton.innerText = 'Buy';
                 removeButton.addEventListener('click', () => {
                     removeCartItem(product.cartID);
                     // Remove the product card from the UI
                     productCard.remove();
+                    location.reload();
                 });
 
+
+                orderButton.innerText = 'Buy';
                 orderButton.addEventListener('click', function(){
                      // Construct the URL with product details as query parameters
-                     const orderItemUrl_1 = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.productID}&productName=${encodeURIComponent(product.productName)}&productPrice=${product.productPrice}&quantity=${product.noOfProductsAvailable}`;
+                     const orderItemUrl_1 = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.product.productID}&productName=${encodeURIComponent(product.product.productName)}&productPrice=${product.product.productPrice}`;
                      window.location.href = orderItemUrl_1;
                  });
-
-
 
                 productCard.appendChild(removeButton);
                 productCard.appendChild(orderButton);
@@ -158,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function() {
       .then(data => {
         // Calculate total count
         const totalCount = data.reduce((acc, item) => acc + item.quantity, 0);
+        console.log('totalCount - ', totalCount);
 
         // Update the content of the HTML element
         const totalItemsElement = document.getElementById('totalItems');
@@ -200,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const productId = getQueryParam('productId');
             const productName = getQueryParam('productName');
             const productPrice = getQueryParam('productPrice');
-            const quantity = getQueryParam('quantity');
+//            const quantity = getQueryParam('quantity');
 
             // Display product details on the page
             const productDetailsElement = document.getElementById('productDetails');
@@ -208,13 +209,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 <p>Product ID: ${productId}</p>
                 <p>Product Name: ${productName}</p>
                 <p>Product Price: ${productPrice}</p>
-                <p>Quantity: ${quantity}</p>
             `;
 
             console.log('Product ID:', productId);
             console.log('Product Name:', productName);
             console.log('Product Price:', productPrice);
-            console.log('Quantity:', quantity);
 
 
             // Button click event to place the order (add your logic here)

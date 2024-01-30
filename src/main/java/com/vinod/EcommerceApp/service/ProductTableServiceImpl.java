@@ -16,8 +16,34 @@ public class ProductTableServiceImpl implements ProductTableService {
     @Override
     public void createProduct(ProductTable productTable) {
         //logger.info("Product Table Created : " + productTable);
+
+        validateProductData(productTable);
+
+        performBusinessLogic(productTable);
+
         productTableRepository.save(productTable);
     }
+    private void validateProductData(ProductTable productTable) {
+        if (productTable == null) {
+            throw new IllegalArgumentException("Product cannot be null");
+        }
+        if (productTable.getProductName() == null || productTable.getProductName().isEmpty()) {
+            throw new IllegalArgumentException("Product name cannot be empty");
+        }
+        if (productTable.getProductID() == null || productTable.getProductID().isEmpty()) {
+            throw new IllegalArgumentException("Product ID cannot be empty");
+        }
+    }
+
+    private void performBusinessLogic(ProductTable productTable) {
+        String productId = productTable.getProductID();
+        if (productTableRepository.existsById(Integer.valueOf(productId))) {
+            throw new IllegalArgumentException("Product with ID " + productId + " already exists");
+        }
+    }
+
+
+
 
     @Override
     public void createProducts(List<ProductTable> productTables) {
