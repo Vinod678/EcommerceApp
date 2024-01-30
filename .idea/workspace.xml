@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="ProductControllerTest and ProductTableServiceImpl business logic implemented">
+    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="Cart Controller validations added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/CartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/repository/CartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/repository/CartRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/ProductTableService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/ProductTableService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/ProductTableServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/ProductTableServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/controller/CartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/controller/CartController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/repository/CartRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/repository/CartRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/CartTableServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/CartTableServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/ProductTableServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/ProductTableServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/vinod/EcommerceApp/ProductControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/vinod/EcommerceApp/ProductControllerTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Version-04" />
+        <entry key="$PROJECT_DIR$" value="Version-06-loginForm" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -215,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706595305049</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Cart Controller validations added">
+      <created>1706605813807</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1706605813807</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -250,7 +251,8 @@
     <MESSAGE value="Shopping cart : addToCart, getAllCartItems,clearCart" />
     <MESSAGE value="Clear Cart and Cart count added" />
     <MESSAGE value="ProductControllerTest and ProductTableServiceImpl business logic implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="ProductControllerTest and ProductTableServiceImpl business logic implemented" />
+    <MESSAGE value="Cart Controller validations added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cart Controller validations added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -266,7 +268,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java</url>
-          <line>45</line>
+          <line>63</line>
           <properties class="com.vinod.EcommerceApp.service.CartTableServiceImpl" method="getAllCartItems">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -275,7 +277,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java</url>
-          <line>46</line>
+          <line>64</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

@@ -14,6 +14,11 @@ public class ProductTableServiceImpl implements ProductTableService {
     ProductTableRepository productTableRepository;
 
     @Override
+    public ProductTable getProductById(String productId) {
+        return productTableRepository.findById(Integer.valueOf(productId)).orElse(null);
+    }
+
+    @Override
     public void createProduct(ProductTable productTable) {
         //logger.info("Product Table Created : " + productTable);
         validateProductData(productTable);

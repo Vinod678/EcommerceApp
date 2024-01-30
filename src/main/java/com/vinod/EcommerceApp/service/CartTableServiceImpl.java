@@ -1,6 +1,7 @@
 package com.vinod.EcommerceApp.service;
 
 import com.vinod.EcommerceApp.model.CartTable.CartTable;
+import com.vinod.EcommerceApp.model.ProductTable.ProductTable;
 import com.vinod.EcommerceApp.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,17 +15,30 @@ public class CartTableServiceImpl implements CartTableService {
     @Autowired
     private CartRepository cartRepository;
 
+    @Autowired
+    private ProductTableService productTableService;
+
     @Override
     public void addToCart(CartTable cartItem) {
         validateCartItem(cartItem);
         handleDuplicateCartItem(cartItem);
         cartRepository.save(cartItem);
     }
-
     private void validateCartItem(CartTable cartItem) {
+        // Get the product ID from the cart item
+        String productId = cartItem.getProduct().getProductID();
+
+        // Fetch the product from the ProductTable using its ID
+        ProductTable product = productTableService.getProductById(productId);
+
+        // Check if the product exists
+        if (product == null) {
+            throw new IllegalArgumentException("Product not found with ID: " + productId);
+        }
+
         // Check if the quantity is valid
-        if (cartItem.getQuantity() <= 0) {
-            throw new IllegalArgumentException("Invalid quantity: Quantity must be greater than zero.");
+        if (cartItem.getQuantity() <= 0 || cartItem.getQuantity() > product.getNoOfProductsAvailable()) {
+            throw new IllegalArgumentException("Invalid quantity: Quantity must be greater than zero and less than or equal to available quantity.");
         }
     }
 
