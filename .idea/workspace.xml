@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="Cart Controller validations added">
+    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="Cart Validations based on quantity available">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/ProductTableService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/ProductTableService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/ProductTableServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/ProductTableServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/orderItem.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/orderItem.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706605813807</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Cart Validations based on quantity available">
+      <created>1706608813735</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1706608813735</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -252,7 +258,8 @@
     <MESSAGE value="Clear Cart and Cart count added" />
     <MESSAGE value="ProductControllerTest and ProductTableServiceImpl business logic implemented" />
     <MESSAGE value="Cart Controller validations added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cart Controller validations added" />
+    <MESSAGE value="Cart Validations based on quantity available" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cart Validations based on quantity available" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -268,7 +275,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java</url>
-          <line>63</line>
+          <line>58</line>
           <properties class="com.vinod.EcommerceApp.service.CartTableServiceImpl" method="getAllCartItems">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -277,7 +284,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java</url>
-          <line>64</line>
+          <line>59</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
