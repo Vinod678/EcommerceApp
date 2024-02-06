@@ -9,10 +9,10 @@
 </head>
 <body>
 
-<div style="display:flex; float:right">
+<div id="LoginButton">
     <button id="login" style="float:right">User Login</button>
-
 </div>
+
 <h1 style="color:Red; font-size:60px; text-align:center;">SuperCart</h1>
 
 <h1>Product List</h1>
@@ -29,21 +29,21 @@
 <!-- Login Popup -->
 <div id="loginPopup" class="popup">
     <span class="close" onclick="closePopup('loginPopup')">&times;</span>
-    <h2>Login</h2>
+    <h2 class="form-title">Login</h2>
     <form id="loginForm">
         <label for="loginEmail">Email:</label>
         <input type="email" id="loginEmail" name="loginEmail"><br><br>
         <label for="loginPassword">Password:</label>
         <input type="password" id="loginPassword" name="loginPassword"><br><br>
-        <button type="submit">Sign in</button>
+        <button type="submit" class="btn-signin">Sign in</button>
     </form>
-    <button id="registerFromLogin" style="float:right">Register New User</button>
+    <button id="registerFromLogin" class="btn-register">Register New User</button>
 </div>
 
 <!-- Registration Popup -->
 <div id="registerPopup" class="popup">
     <span class="close" onclick="closePopup('registerPopup')">&times;</span>
-    <h2>Register New User</h2>
+    <h2 class="form-title">Register New User</h2>
     <form id="registerForm">
         <label for="registerEmail">Email:</label>
         <input type="email" id="registerEmail" name="registerEmail"><br><br>
@@ -51,10 +51,11 @@
         <input type="password" id="registerPassword" name="registerPassword"><br><br>
         <label for="confirmPassword">Confirm Password:</label>
         <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
-        <button type="submit">Register</button>
+        <button type="submit" class="btn-register">Register</button>
     </form>
-    <button id="loginFromRegister" style="float:right">Sign In</button>
+    <button id="loginFromRegister" class="btn-signin">Sign In</button>
 </div>
+
 
 </body>
 </html>

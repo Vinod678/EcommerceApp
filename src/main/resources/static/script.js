@@ -85,44 +85,6 @@
         }
     });
 
-//// Validate login form
-//    const loginForm = document.getElementById('loginForm');
-//    loginForm.addEventListener('submit', function (event) {
-//        const emailInput = document.getElementById('loginEmail');
-//        const passwordInput = document.getElementById('loginPassword');
-//        if (!emailInput.value.trim()) {
-//            event.preventDefault();
-//            alert('Email is required.');
-//            emailInput.focus();
-//        } else if (!passwordInput.value.trim()) {
-//            event.preventDefault();
-//            alert('Password is required.');
-//            passwordInput.focus();
-//        }
-//    });
-//
-//    // Validate registration form
-//    const registerForm = document.getElementById('registerForm');
-//    registerForm.addEventListener('submit', function (event) {
-//        const emailInput = document.getElementById('registerEmail');
-//        const passwordInput = document.getElementById('registerPassword');
-//        const confirmPasswordInput = document.getElementById('confirmPassword');
-//        if (!emailInput.value.trim()) {
-//            event.preventDefault();
-//            alert('Email is required.');
-//            emailInput.focus();
-//        } else if (!passwordInput.value.trim()) {
-//            event.preventDefault();
-//            alert('Password is required.');
-//            passwordInput.focus();
-//        } else if (!confirmPasswordInput.value.trim()) {
-//            event.preventDefault();
-//            alert('Confirm Password is required.');
-//            confirmPasswordInput.focus();
-//        }
-//    });
-//
-//
 // JavaScript for handling the popup windows
 document.getElementById('login').addEventListener('click', function () {
     document.getElementById('loginPopup').style.display = 'block';
@@ -241,12 +203,43 @@ loginForm.addEventListener('submit', function(event) {
     });
 });
 
+//function updateUIAfterLogin(email) {
+//    const loginButton = document.getElementById('login');
+//    loginButton.textContent = email; // Display the user's email instead of "User Login"
+//
+//    const logoutButton = document.createElement('button');
+//    logoutButton.textContent = 'Logout';
+//    logoutButton.addEventListener('click', function() {
+//        // Handle logout functionality here, such as clearing session data or performing a logout API request
+//        // For now, let's just clear the login state from localStorage
+//        localStorage.removeItem('loggedIn'); // Remove the login state
+//        localStorage.removeItem('userEmail'); // Remove the user's email from localStorage
+//        window.location.reload(); // Refresh the page
+//    });
+//
+//    // Append the logout button next to the login button
+//    loginButton.insertAdjacentElement('afterend', logoutButton);
+//
+//    // Set the login state in localStorage
+//    localStorage.setItem('loggedIn', true);
+//    localStorage.setItem('userEmail', email); // Store the user's email in localStorage
+//}
+
+
 function updateUIAfterLogin(email) {
-    const loginButton = document.getElementById('login');
-    loginButton.textContent = email; // Display the user's email instead of "User Login"
+    // Set the login state and user email in localStorage first
+    localStorage.setItem('loggedIn', true);
+    localStorage.setItem('userEmail', email);
+
+    const userEmailSpan = document.createElement('span');
+    userEmailSpan.textContent = email;
+    userEmailSpan.id = 'userEmail';
 
     const logoutButton = document.createElement('button');
     logoutButton.textContent = 'Logout';
+    logoutButton.id = 'logout';
+    logoutButton.style.float = 'right';
+
     logoutButton.addEventListener('click', function() {
         // Handle logout functionality here, such as clearing session data or performing a logout API request
         // For now, let's just clear the login state from localStorage
@@ -255,13 +248,14 @@ function updateUIAfterLogin(email) {
         window.location.reload(); // Refresh the page
     });
 
-    // Append the logout button next to the login button
-    loginButton.insertAdjacentElement('afterend', logoutButton);
-
-    // Set the login state in localStorage
-    localStorage.setItem('loggedIn', true);
-    localStorage.setItem('userEmail', email); // Store the user's email in localStorage
+    const loginButton = document.getElementById('login');
+    loginButton.parentNode.insertBefore(logoutButton, loginButton.nextSibling);
+    loginButton.parentNode.insertBefore(userEmailSpan, logoutButton);
+    loginButton.style.display = 'none'; // Hide the original login button
 }
+
+
+
 
 
 document.addEventListener("DOMContentLoaded", function () {

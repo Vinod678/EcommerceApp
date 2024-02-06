@@ -242,7 +242,6 @@ width: 50%;
 
 
 
-
 /* CSS styles for login and registration forms */
 .popup {
     display: none;
@@ -252,9 +251,10 @@ width: 50%;
     transform: translate(-50%, -50%);
     background-color: #f9f9f9;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 16px inset #1C6EA4;
+    border-radius: 16px;
     z-index: 1000;
-    max-width: 400px;
+    max-width: 600px;
 }
 
 .popup label {
@@ -287,7 +287,106 @@ width: 50%;
     line-height: 1;
 }
 
-.error-message {
-    color: red;
-    font-size: 12px;
+
+/* Additional CSS styles for login and registration forms */
+
+.form-title {
+    text-align: center;
+    color: #333;
 }
+
+.btn-signin,
+.btn-register {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-signin:hover,
+.btn-register:hover {
+    background-color: #45a049;
+}
+
+.btn-register {
+    text-decoration: underline;
+    color: red;
+}
+
+.popup {
+    /* Existing styles */
+    max-width: 500px; /* Increase box size */
+}
+
+.popup button[type="submit"] {
+    /* Additional styles for the submit button */
+    background-color: #3498db;
+    border-radius: 5px;
+    border: 2px solid #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+.popup button[type="submit"]:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+.popup button#loginFromRegister {
+    /* Styles for the "Sign In" button */
+    float: right;
+    background-color: #e74c3c;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.popup button#loginFromRegister:hover {
+    background-color: #c0392b;
+}
+
+
+
+#LoginButton{
+    display:flex;
+    float:right
+}
+
+#login {
+    background-color: #f44336; /* Red background color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add some padding */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+
+#userEmail {
+
+    font-weight: bold; /* Make the email text bold */
+    margin-right: 10px; /* Add some space between the email and the logout button */
+    border: 10px outset #6150ff;
+}
+
+#logout {
+    background-color: #f44336; /* Red background color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add some padding */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+#logout:hover {
+    background-color: #d32f2f; /* Darker red background color on hover */
+}
+
+
+
+
