@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="Initial Commit" />
+    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="Login and Logout">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/style.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +20,7 @@
       <list>
         <option value="Kotlin Class" />
         <option value="Interface" />
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
@@ -22,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Version-07" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,24 +53,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/VinodYedla9/Desktop/Infy_Spring_Projects/EcommerceApp/EcommerceApp",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/VinodYedla9/Desktop/Java_Practice/SpringBootRestApiPractice&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="Application.EcommerceApplication">
     <configuration name="EcommerceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.vinod.EcommerceApp.EcommerceApplication" />
       <module name="EcommerceApp" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.vinod.EcommerceApp.*" />
+          <option name="PATTERN" value="com.vinod.EcommerceApp.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -72,8 +79,74 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="EcommerceApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EcommerceApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vinod.EcommerceApp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vinod.EcommerceApp" />
+      <option name="MAIN_CLASS_NAME" value="com.vinod.EcommerceApp.EcommerceApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EcommerceApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vinod.EcommerceApp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vinod.EcommerceApp" />
+      <option name="MAIN_CLASS_NAME" value="com.vinod.EcommerceApp.ProductControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductControllerTest.testGetProducts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EcommerceApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vinod.EcommerceApp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vinod.EcommerceApp" />
+      <option name="MAIN_CLASS_NAME" value="com.vinod.EcommerceApp.ProductControllerTest" />
+      <option name="METHOD_NAME" value="testGetProducts" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductControllerTest.testSearchProducts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EcommerceApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vinod.EcommerceApp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vinod.EcommerceApp" />
+      <option name="MAIN_CLASS_NAME" value="com.vinod.EcommerceApp.ProductControllerTest" />
+      <option name="METHOD_NAME" value="testSearchProducts" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ProductControllerTest.testSearchProducts" />
+        <item itemvalue="JUnit.ProductControllerTest.testGetProducts" />
+        <item itemvalue="JUnit.ProductControllerTest" />
+        <item itemvalue="JUnit.EcommerceApplicationTests" />
         <item itemvalue="Application.EcommerceApplication" />
       </list>
     </recent_temporary>
@@ -94,7 +167,91 @@
       <option name="project" value="LOCAL" />
       <updated>1704385475011</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Initial Commit">
+      <created>1704792988426</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1704792988426</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Initial Commit">
+      <created>1704793043345</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1704793043345</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Shopping cart adding">
+      <created>1704798929082</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1704798929082</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Shopping cart : addToCart, getAllCartItems,clearCart">
+      <created>1704826665570</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1704826665570</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Clear Cart and Cart count added">
+      <created>1705057872029</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1705057872029</updated>
+    </task>
+    <task id="LOCAL-00007" summary="ProductControllerTest and ProductTableServiceImpl business logic implemented">
+      <created>1706595305049</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1706595305049</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Cart Controller validations added">
+      <created>1706605813807</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1706605813807</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Cart Validations based on quantity available">
+      <created>1706608813735</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1706608813735</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Quantity Increase/Decrease Js events added">
+      <created>1706862215134</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1706862215134</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Login and Register and Subtotal functionalities added">
+      <created>1707217441323</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1707217441323</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Login and Register and Subtotal functionalities added">
+      <created>1707217476535</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1707217476535</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Login and Logout">
+      <created>1707219903740</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1707219903740</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,6 +282,44 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Shopping cart adding" />
+    <MESSAGE value="Shopping cart : addToCart, getAllCartItems,clearCart" />
+    <MESSAGE value="Clear Cart and Cart count added" />
+    <MESSAGE value="ProductControllerTest and ProductTableServiceImpl business logic implemented" />
+    <MESSAGE value="Cart Controller validations added" />
+    <MESSAGE value="Cart Validations based on quantity available" />
+    <MESSAGE value="Quantity Increase/Decrease Js events added" />
+    <MESSAGE value="Login and Register and Subtotal functionalities added" />
+    <MESSAGE value="Login and Logout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login and Logout" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/CartController.java</url>
+          <line>43</line>
+          <properties class="com.vinod.EcommerceApp.controller.CartController" method="getAllCartItems">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java</url>
+          <line>60</line>
+          <properties class="com.vinod.EcommerceApp.service.CartTableServiceImpl" method="getAllCartItems">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
