@@ -141,10 +141,6 @@ function closePopup(popupId) {
     document.getElementById(popupId).style.display = 'none';
 }
 
-
-
-
-
 // Function to handle form submission for user registration
 const registerForm = document.getElementById('registerForm');
 registerForm.addEventListener('submit', function(event) {
@@ -230,19 +226,15 @@ loginForm.addEventListener('submit', function(event) {
         },
         body: JSON.stringify(requestBody)
     })
-
     .then(response => {
         if (response.ok) {
             alert('Login successful.');
             document.getElementById('loginPopup').style.display = 'none'; // Hide the login popup
-            updateUIAfterLogin(emailInput.value.trim()); // Pass the email address
+            updateUIAfterLogin(emailInput.trim()); // Pass the email address without accessing .value
         } else {
             alert('Invalid username or password.');
         }
     })
-
-
-
     .catch(error => {
         console.error('Error logging in:', error);
         alert('An error occurred while logging in. Please try again.');
@@ -259,6 +251,7 @@ function updateUIAfterLogin(email) {
         // Handle logout functionality here, such as clearing session data or performing a logout API request
         // For now, let's just clear the login state from localStorage
         localStorage.removeItem('loggedIn'); // Remove the login state
+        localStorage.removeItem('userEmail'); // Remove the user's email from localStorage
         window.location.reload(); // Refresh the page
     });
 
@@ -267,15 +260,15 @@ function updateUIAfterLogin(email) {
 
     // Set the login state in localStorage
     localStorage.setItem('loggedIn', true);
+    localStorage.setItem('userEmail', email); // Store the user's email in localStorage
 }
-
 
 
 document.addEventListener("DOMContentLoaded", function () {
     const loggedIn = localStorage.getItem('loggedIn');
 
     if (loggedIn) {
-        const email = 'user@example.com'; // Retrieve the user's email from localStorage or the server
+        const email = localStorage.getItem('userEmail'); // Retrieve the user's email from localStorage
         updateUIAfterLogin(email);
     } else {
         // Show the login button
@@ -283,12 +276,3 @@ document.addEventListener("DOMContentLoaded", function () {
         loginButton.style.display = 'block'; // or any other appropriate way to display it
     }
 });
-
-
-
-
-
-
-
-
-

@@ -4,23 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="Quantity Increase/Decrease Js events added">
+    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="Login and Register and Subtotal functionalities added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/CartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/cart.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/orderItem.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/orderItem.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/controller/CartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/controller/CartController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/CartTableService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/CartTableService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/CartTableServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/CartTableServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/orderItem.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/orderItem.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Version-06-loginForm" />
+        <entry key="$PROJECT_DIR$" value="Version-07" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -155,11 +143,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.EcommerceApplication" />
-        <item itemvalue="JUnit.ProductControllerTest.testGetProducts" />
         <item itemvalue="JUnit.ProductControllerTest.testSearchProducts" />
+        <item itemvalue="JUnit.ProductControllerTest.testGetProducts" />
         <item itemvalue="JUnit.ProductControllerTest" />
         <item itemvalue="JUnit.EcommerceApplicationTests" />
+        <item itemvalue="Application.EcommerceApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -242,7 +230,21 @@
       <option name="project" value="LOCAL" />
       <updated>1706862215134</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Login and Register and Subtotal functionalities added">
+      <created>1707217441323</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1707217441323</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Login and Register and Subtotal functionalities added">
+      <created>1707217476535</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1707217476535</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -280,7 +282,8 @@
     <MESSAGE value="Cart Controller validations added" />
     <MESSAGE value="Cart Validations based on quantity available" />
     <MESSAGE value="Quantity Increase/Decrease Js events added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Quantity Increase/Decrease Js events added" />
+    <MESSAGE value="Login and Register and Subtotal functionalities added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login and Register and Subtotal functionalities added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
