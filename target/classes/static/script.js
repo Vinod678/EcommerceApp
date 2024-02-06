@@ -223,3 +223,89 @@ document.addEventListener("DOMContentLoaded", function() {
                 alert('Order placed successfully!');
             });
         });
+
+
+
+//Quantity increase and descrease In Order Page
+
+
+//const minusButton = document.getElementById('minus');
+//const plusButton = document.getElementById('plus');
+//const inputField = document.getElementById('input');
+//
+//
+//minusButton.addEventListener('click' , event => {
+//    event.preventDefault();
+//    const currentValue = Number(inputField.value) || 0;
+//    inputField.value = currentValue - 1;
+//});
+//
+//plusButton.addEventListener('click', event => {
+//    event.preventDefault();
+//    const currentValue = Number(inputField.value) || 0;
+//    inputField.value = currentValue + 1;
+//})
+
+
+ const minusButton = document.getElementById('minus');
+ const plusButton = document.getElementById('plus');
+ const inputField = document.getElementById('input');
+ const totalValue = document.getElementById("total-value");
+
+ function updateValue(newValue) {
+     const minValue = parseInt(inputField.min);
+     const maxValue = parseInt(inputField.max);
+     if (!isNaN(minValue) && newValue < minValue) {
+         newValue = minValue;
+     }
+     if (!isNaN(maxValue) && newValue > maxValue) {
+         newValue = maxValue;
+     }
+     inputField.value = newValue;
+     updateTotalCost();
+ }
+
+function updateTotalCost() {
+    const productPriceString = document.querySelector('#productDetails > p:nth-child(3)').textContent;
+    console.log("Product Price String:", productPriceString);
+    const productPrice = parseFloat(productPriceString.match(/\d+\.\d+/)); // Extract numeric value using regex
+    console.log("Parsed Product Price:", productPrice);
+    const quantity = parseInt(inputField.value);
+    console.log("Quantity:", quantity);
+    const totalCost = productPrice * quantity;
+//    totalValue.textContent = totalCost.toFixed(2); // Display total cost with 2 decimal places
+    totalValue.textContent = '$' + totalCost.toFixed(2); // Display total cost with dollar sign
+}
+
+ minusButton.addEventListener('click', event => {
+     event.preventDefault();
+     updateValue(parseInt(inputField.value) - 1);
+ });
+
+ plusButton.addEventListener('click', event => {
+     event.preventDefault();
+     updateValue(parseInt(inputField.value) + 1);
+ });
+
+ inputField.addEventListener('input', event => {
+     const newValue = parseInt(event.target.value);
+     if (!isNaN(newValue)) {
+         updateValue(newValue);
+     }
+ });
+
+// Calculate total cost when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    updateTotalCost();
+});
+
+
+
+// JavaScript for handling the popup windows
+    document.getElementById('login').addEventListener('click', function() {
+        document.getElementById('loginPopup').style.display = 'block';
+    });
+
+    function closePopup(popupId) {
+        document.getElementById(popupId).style.display = 'none';
+    }

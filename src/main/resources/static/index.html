@@ -1,5 +1,3 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,22 +6,52 @@
     <title>Super Cart</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-
 </head>
 <body>
 
-<h1 style="color:Red ;Font-size:60px" ; align="center"> SuperCart</h1>
+<button id="login" style="float:right">User Login</button>
+<h1 style="color:Red; font-size:60px; text-align:center;">SuperCart</h1>
+
 <h1>Product List</h1>
 
 <form>
     <label for="searchProduct">Search Products :</label>
     <input style="width:500px; margin-top:10px" type="text" id="searchProduct" name="searchProduct" placeholder="Enter Product ID or product Name"><br><br>
 </form>
-<h1 style="text-align:right; color:blue ; text-decoration:underline"><a href="http://localhost:63342/EcommerceApp/static/cart.html">Shopping Cart</a></h1>
+<h1 style="text-align:right; color:blue; text-decoration:underline;"><a href="http://localhost:63342/EcommerceApp/static/cart.html">Shopping Cart</a></h1>
 
 <div id="productList">
 </div>
 
+<!-- Login Popup -->
+<div id="loginPopup" class="popup">
+    <span class="close" onclick="closePopup('loginPopup')">&times;</span>
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="loginEmail">Email:</label>
+        <input type="email" id="loginEmail" name="loginEmail"><br><br>
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" name="loginPassword"><br><br>
+        <button type="submit">Sign in</button>
+    </form>
+    <button id="registerFromLogin" style="float:right">Register New User</button>
+</div>
+
+<!-- Registration Popup -->
+<div id="registerPopup" class="popup">
+    <span class="close" onclick="closePopup('registerPopup')">&times;</span>
+    <h2>Register New User</h2>
+    <form id="registerForm">
+        <label for="registerEmail">Email:</label>
+        <input type="email" id="registerEmail" name="registerEmail"><br><br>
+        <label for="registerPassword">Password:</label>
+        <input type="password" id="registerPassword" name="registerPassword"><br><br>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
+        <button type="submit">Register</button>
+    </form>
+    <button id="loginFromRegister" style="float:right">Sign In</button>
+</div>
 
 </body>
 </html>

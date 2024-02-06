@@ -8,4 +8,5 @@ public interface CartTableService {
     List<CartTable> getAllCartItems();
     void clearCartSingleItem(Long cartID);
     void clearCart();
+    Double subTotalCost();
 }

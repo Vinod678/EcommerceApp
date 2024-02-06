@@ -3,9 +3,11 @@ package com.vinod.EcommerceApp.service;
 import com.vinod.EcommerceApp.model.CartTable.CartTable;
 import com.vinod.EcommerceApp.model.ProductTable.ProductTable;
 import com.vinod.EcommerceApp.repository.CartRepository;
+import com.vinod.EcommerceApp.repository.ProductTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,4 +71,32 @@ public class CartTableServiceImpl implements CartTableService {
     public void clearCart() {
         cartRepository.deleteAll();
     }
+
+    @Override
+    public Double subTotalCost() {
+        Double subTotal = 0.0; // Use Double instead of Integer to handle decimal values
+
+        // Retrieve all cart items
+        List<CartTable> cartItems = getAllCartItems();
+
+        // Iterate over each cart item
+        for (CartTable cartItem : cartItems) {
+            // Retrieve the product associated with the cart item
+            ProductTable product = cartItem.getProduct();
+
+            // Ensure product and product price are not null
+            if (product != null && product.getProductPrice() != null) {
+                // Remove currency symbol and parse the product price to Double
+                String priceString = product.getProductPrice().replace("$", "");
+                Double price = Double.parseDouble(priceString);
+
+                // Multiply the price by the quantity and add to subtotal
+                subTotal += price * cartItem.getQuantity();
+            }
+        }
+        System.out.println("subTotal" + subTotal);
+
+        return subTotal;
+    }
+
 }

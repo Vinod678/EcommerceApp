@@ -12,7 +12,9 @@
 </head>
 <body>
 
+<button id="login" style="float:right">User Login</button>
 <h1 style="color:Red ;Font-size:60px" ; align="center"> SuperCart</h1>
+
 <h1>Product List</h1>
 
 <form>
@@ -23,6 +25,37 @@
 
 <div id="productList">
 </div>
+
+<!-- Login Popup -->
+<div id="loginPopup" class="popup">
+    <span class="close" onclick="closePopup('loginPopup')">&times;</span>
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="userID">UserID:</label>
+        <input type="text" id="userID" name="userID"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="submit">Sign in</button>
+    </form>
+</div>
+
+<!-- Registration Popup -->
+<div id="registerPopup" class="popup">
+    <span class="close" onclick="closePopup('registerPopup')">&times;</span>
+    <h2>Register New User</h2>
+    <form id="registerForm">
+        <label for="newUserID">UserID:</label>
+        <input type="text" id="newUserID" name="newUserID"><br><br>
+        <label for="customerName">Name:</label>
+        <input type="text" id="customerName" name="customerName"><br><br>
+        <label for="customerEmail">Email:</label>
+        <input type="text" id="customerEmail" name="customerEmail"><br><br>
+        <label for="customerAddress">Address:</label>
+        <input type="text" id="customerAddress" name="customerAddress"><br><br>
+        <button type="submit">Register</button>
+    </form>
+</div>
+
 
 
 </body>
