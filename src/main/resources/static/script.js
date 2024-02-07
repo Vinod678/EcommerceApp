@@ -131,7 +131,7 @@ registerForm.addEventListener('submit', function(event) {
 
     // Prepare the request body
     const requestBody = {
-        userName: emailInput,
+        userEmail: emailInput,
         password: passwordInput
     };
 
@@ -176,7 +176,7 @@ loginForm.addEventListener('submit', function(event) {
 
     // Prepare the request body
     const requestBody = {
-        userName: emailInput,
+        userEmail: emailInput,
         password: passwordInput
     };
 
@@ -234,6 +234,14 @@ function updateUIAfterLogin(email) {
     const userEmailSpan = document.createElement('span');
     userEmailSpan.textContent = email;
     userEmailSpan.id = 'userEmail';
+    userEmailSpan.style.cursor = 'pointer'; // Add pointer cursor for indicating clickability
+
+        // Add click event listener to the user email span
+        userEmailSpan.addEventListener('click', function() {
+            // Show the popup for updating additional customer details
+            document.getElementById('updateCustomerDetailsPopup').style.display = 'block';
+        });
+
 
     const logoutButton = document.createElement('button');
     logoutButton.textContent = 'Logout';
