@@ -6,9 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="Login and Logout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/model/User/UserProfileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/model/User/UserProfileEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserProfileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserProfileServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/User/UserEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/User/UserEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/cartScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/cartScript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/orderItem.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/orderItem.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,11 +152,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.EcommerceApplication" />
         <item itemvalue="JUnit.ProductControllerTest.testSearchProducts" />
         <item itemvalue="JUnit.ProductControllerTest.testGetProducts" />
         <item itemvalue="JUnit.ProductControllerTest" />
         <item itemvalue="JUnit.EcommerceApplicationTests" />
-        <item itemvalue="Application.EcommerceApplication" />
       </list>
     </recent_temporary>
   </component>

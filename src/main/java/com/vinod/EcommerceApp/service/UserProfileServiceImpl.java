@@ -18,6 +18,6 @@ public class UserProfileServiceImpl implements UserProfileService {
     private UserRepository userRepository;
 
     @Autowired
-    private UserProfileRepository customerRepository;
+    private UserProfileRepository userProfileRepository;
 
 }

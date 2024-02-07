@@ -1,0 +1,1114 @@
+Index: target/classes/static/script.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/static/script.js b/target/classes/static/script.js
+--- a/target/classes/static/script.js	
++++ b/target/classes/static/script.js	
+@@ -1,311 +1,272 @@
+-//Products Table available
+-document.addEventListener("DOMContentLoaded", function () {
+-    const productList = document.getElementById('productList');
+-    const searchForm = document.querySelector('form');
++    //Products Table available
++    document.addEventListener("DOMContentLoaded", function () {
++        const productList = document.getElementById('productList');
++        const searchForm = document.querySelector('form');
+ 
+-    // Fetch all products initially
+-    fetchProducts();
++        // Fetch all products initially
++        fetchProducts();
+ 
+-    searchForm.addEventListener('submit', function (event) {
+-        event.preventDefault();
++        searchForm.addEventListener('submit', function (event) {
++            event.preventDefault();
+ 
+-        const searchInput = document.getElementById('searchProduct');
+-        const query = searchInput.value;
++            const searchInput = document.getElementById('searchProduct');
++            const query = searchInput.value;
+ 
+-        // Fetch products based on the search query
+-        fetchProducts(query);
+-    });
++            // Fetch products based on the search query
++            fetchProducts(query);
++        });
+ 
+-    function fetchProducts(query = '') {
+-        // Clear the existing product list
+-        productList.innerHTML = '';
++        function fetchProducts(query = '') {
++            // Clear the existing product list
++            productList.innerHTML = '';
+ 
+-        // Fetch products from the backend
+-        const apiUrl = query ? `http://localhost:8080/products/search?query=${query}` : 'http://localhost:8080/products';
++            // Fetch products from the backend
++            const apiUrl = query ? `http://localhost:8080/products/search?query=${query}` : 'http://localhost:8080/products';
+ 
+-        fetch(apiUrl)
+-            .then(response => response.json())
+-            .then(products => {
+-                // Update the UI with the product list
+-                products.forEach(product => {
+-                    const productCard = document.createElement('div');
+-                    const productCardImg = document.createElement('div');
+-                    const img = document.createElement('img');
+-                    const h2 = document.createElement('h2');
+-                    const addButton = document.createElement('button');
+-                    const orderButton = document.createElement('button');
++            fetch(apiUrl)
++                .then(response => response.json())
++                .then(products => {
++                    // Update the UI with the product list
++                    products.forEach(product => {
++                        const productCard = document.createElement('div');
++                        const productCardImg = document.createElement('div');
++                        const img = document.createElement('img');
++                        const h2 = document.createElement('h2');
++                        const addButton = document.createElement('button');
++                        const orderButton = document.createElement('button');
+ 
+-                    img.src = product.productImage;
+-                    img.width = '140';
+-                    img.height = '60';
+-                    img.align = 'center';
++                        img.src = product.productImage;
++                        img.width = '140';
++                        img.height = '60';
++                        img.align = 'center';
+ 
+-                    productCard.className = 'product-card';
+-                    productCard.appendChild(img);
++                        productCard.className = 'product-card';
++                        productCard.appendChild(img);
+ 
+-                    productCard.innerHTML += `<p>${product.productID}</p><p>  ${product.productName}</p><p> Cost: ${product.productPrice}</p><p> Quantity: ${product.noOfProductsAvailable}</p>`;
++                        productCard.innerHTML += `<p>${product.productID}</p><p>  ${product.productName}</p><p> Cost: ${product.productPrice}</p><p> Quantity: ${product.noOfProductsAvailable}</p>`;
+ 
+-                    addButton.innerText = 'Add To Cart';
+-                    orderButton.innerText = 'Buy';
+-                    addButton.addEventListener('click', () => {
+-                        addToCartItem(product.productID);
+-                    });
++                        addButton.innerText = 'Add To Cart';
++                        orderButton.innerText = 'Buy';
++                        addButton.addEventListener('click', () => {
++                            addToCartItem(product.productID);
++                        });
+ 
+-                    orderButton.addEventListener('click', function(){
+-                                            // Construct the URL with product details as query parameters
+-                                            const orderItemUrl = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.productID}&productName=${encodeURIComponent(product.productName)}&productPrice=${product.productPrice}`;
+-                                            window.location.href = orderItemUrl;
+-                                        });
++                        orderButton.addEventListener('click', function(){
++                                                // Construct the URL with product details as query parameters
++                                                const orderItemUrl = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.productID}&productName=${encodeURIComponent(product.productName)}&productPrice=${product.productPrice}`;
++                                                window.location.href = orderItemUrl;
++                                            });
+ 
+-                    productCard.appendChild(addButton);
+-                    productCard.appendChild(orderButton);
+-                    productList.appendChild(productCard);
+-                });
+-            })
+-            .catch(error => console.error('Error:', error));
+-    }
++                        productCard.appendChild(addButton);
++                        productCard.appendChild(orderButton);
++                        productList.appendChild(productCard);
++                    });
++                })
++                .catch(error => console.error('Error:', error));
++        }
+ 
+-    function addToCartItem(productID) {
+-        // Make a POST request to add the item to the cart
+-        fetch('http://localhost:8080/cart/addToCart', {
+-            method: 'POST',
+-            headers: {
+-                'Content-Type': 'application/json',
+-            },
+-            body: JSON.stringify({
+-                product: {
+-                    productID: productID,
+-                },
+-                quantity: 1, // You can set the quantity as needed
+-            }),
+-        })
+-            .then(response => response.json())
+-            .then(data => console.log('Item added to cart:', data))
+-            .catch(error => console.error('Error adding item to cart:', error));
+-    }
+-});
++        function addToCartItem(productID) {
++            // Make a POST request to add the item to the cart
++            fetch('http://localhost:8080/cart/addToCart', {
++                method: 'POST',
++                headers: {
++                    'Content-Type': 'application/json',
++                },
++                body: JSON.stringify({
++                    product: {
++                        productID: productID,
++                    },
++                    quantity: 1, // You can set the quantity as needed
++                }),
++            })
++                .then(response => response.json())
++                .then(data => console.log('Item added to cart:', data))
++                .catch(error => console.error('Error adding item to cart:', error));
++        }
++    });
+ 
+-
+-
+-//Cart Products Table will display
+-document.addEventListener("DOMContentLoaded", function () {
+-    const productList = document.getElementById('cartList');
+-
+-    // Fetch products from the backend
+-    fetch('http://localhost:8080/cart/getAllCartItems')
+-        .then(response => response.json())
+-        .then(products => {
+-            // Update the UI with the product list
+-            products.forEach(product => {
+-                const productCard = document.createElement('div');
+-                const productCardImg = document.createElement('div')
+-                const img = document.createElement('img');
+-                const h2 = document.createElement('h2');
+-                const removeButton = document.createElement('button');
+-                const orderButton = document.createElement('button');
+-
+-                img.src = product.product.productImage;
+-                img.width = '140';
+-                img.height = '60';
+-                img.align = 'center';
+-
+-                productCard.className = 'product-card';
+-                productCard.appendChild(img);
+-
+-                productCard.innerHTML += `<p>${product.cartID}</p><p>${product.product.productID}</p><p>  ${product.product.productName}</p><p> Cost: ${product.product.productPrice}</p><p> Quantity: ${product.quantity}</p>`;
+-
+-                removeButton.innerText = 'Remove From Cart';
+-                removeButton.addEventListener('click', () => {
+-                    removeCartItem(product.cartID);
+-                    // Remove the product card from the UI
+-                    productCard.remove();
+-                    location.reload();
+-                });
+-
+-
+-                orderButton.innerText = 'Buy';
+-                orderButton.addEventListener('click', function(){
+-                     // Construct the URL with product details as query parameters
+-                     const orderItemUrl_1 = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.product.productID}&productName=${encodeURIComponent(product.product.productName)}&productPrice=${product.product.productPrice}`;
+-                     window.location.href = orderItemUrl_1;
+-                 });
+-
+-                productCard.appendChild(removeButton);
+-                productCard.appendChild(orderButton);
+-                productList.appendChild(productCard);
+-            });
+-        })
+-        .catch(error => console.error('Error:', error));
+-
+-    function removeCartItem(cartID) {
+-        // Make a DELETE request to remove the item from the cart
+-        fetch(`http://localhost:8080/cart/clearCartItem/${cartID}`, {
+-            method: 'DELETE',
+-        })
+-            .then(response => response.json())
+-            .then(data => console.log('Item removed from cart:', data))
+-            .catch(error => console.error('Error removing item from cart:', error));
+-    }
+-});
+-
+-
+-
+-
+-
+-document.addEventListener("DOMContentLoaded", function() {
+-    fetch('http://localhost:8080/cart/getAllCartItems')
+-      .then(response => response.json())
+-      .then(data => {
+-        // Calculate total count
+-        const totalCount = data.reduce((acc, item) => acc + item.quantity, 0);
+-        console.log('totalCount - ', totalCount);
+-
+-        // Update the content of the HTML element
+-        const totalItemsElement = document.getElementById('totalItems');
+-        totalItemsElement.textContent = `Total Items In Cart - ${totalCount}`;
+-      })
+-      .catch(error => console.error('Error:', error));
+-});
+-
+-
+-
+-// Function to Delete All Products
+- function deleteAllProducts() {
+-        fetch('http://localhost:8080/cart/clearCart', {
+-            method: 'DELETE'
+-        })
+-        .then(response => {
+-            if (!response.ok) {
+-                throw new Error('Network response was not ok');
+-            }
+-
+-                location.reload();
+-        })
+-        .catch(error => {
+-            console.error('Error:', error);
+-        });
+-    }
+-
+-
+-
+-
+-//To display order details
+-document.addEventListener("DOMContentLoaded", function() {
+-            // Function to retrieve query parameters from the URL
+-            function getQueryParam(name) {
+-                const urlSearchParams = new URLSearchParams(window.location.search);
+-                return urlSearchParams.get(name);
+-            }
+-
+-            // Retrieve product details from query parameters
+-            const productId = getQueryParam('productId');
+-            const productName = getQueryParam('productName');
+-            const productPrice = getQueryParam('productPrice');
+-//            const quantity = getQueryParam('quantity');
+-
+-            // Display product details on the page
+-            const productDetailsElement = document.getElementById('productDetails');
+-            productDetailsElement.innerHTML = `
+-                <p>Product ID: ${productId}</p>
+-                <p>Product Name: ${productName}</p>
+-                <p>Product Price: ${productPrice}</p>
+-            `;
+-
+-            console.log('Product ID:', productId);
+-            console.log('Product Name:', productName);
+-            console.log('Product Price:', productPrice);
+-
+-
+-            // Button click event to place the order (add your logic here)
+-            const placeOrderButton = document.getElementById('placeOrderButton');
+-            placeOrderButton.addEventListener('click', function() {
+-                // Add your logic to place the order
+-                alert('Order placed successfully!');
+-            });
+-        });
+-
+-
+-
+-//Quantity increase and descrease In Order Page
+-
+-
+-//const minusButton = document.getElementById('minus');
+-//const plusButton = document.getElementById('plus');
+-//const inputField = document.getElementById('input');
+-//
+-//
+-//minusButton.addEventListener('click' , event => {
+-//    event.preventDefault();
+-//    const currentValue = Number(inputField.value) || 0;
+-//    inputField.value = currentValue - 1;
+-//});
+-//
+-//plusButton.addEventListener('click', event => {
+-//    event.preventDefault();
+-//    const currentValue = Number(inputField.value) || 0;
+-//    inputField.value = currentValue + 1;
+-//})
+-
+-
+- const minusButton = document.getElementById('minus');
+- const plusButton = document.getElementById('plus');
+- const inputField = document.getElementById('input');
+- const totalValue = document.getElementById("total-value");
+-
+- function updateValue(newValue) {
+-     const minValue = parseInt(inputField.min);
+-     const maxValue = parseInt(inputField.max);
+-     if (!isNaN(minValue) && newValue < minValue) {
+-         newValue = minValue;
+-     }
+-     if (!isNaN(maxValue) && newValue > maxValue) {
+-         newValue = maxValue;
+-     }
+-     inputField.value = newValue;
+-     updateTotalCost();
+- }
+-
+-function updateTotalCost() {
+-    const productPriceString = document.querySelector('#productDetails > p:nth-child(3)').textContent;
+-    console.log("Product Price String:", productPriceString);
+-    const productPrice = parseFloat(productPriceString.match(/\d+\.\d+/)); // Extract numeric value using regex
+-    console.log("Parsed Product Price:", productPrice);
+-    const quantity = parseInt(inputField.value);
+-    console.log("Quantity:", quantity);
+-    const totalCost = productPrice * quantity;
+-//    totalValue.textContent = totalCost.toFixed(2); // Display total cost with 2 decimal places
+-    totalValue.textContent = '$' + totalCost.toFixed(2); // Display total cost with dollar sign
+-}
+-
+- minusButton.addEventListener('click', event => {
+-     event.preventDefault();
+-     updateValue(parseInt(inputField.value) - 1);
+- });
+-
+- plusButton.addEventListener('click', event => {
+-     event.preventDefault();
+-     updateValue(parseInt(inputField.value) + 1);
+- });
+-
+- inputField.addEventListener('input', event => {
+-     const newValue = parseInt(event.target.value);
+-     if (!isNaN(newValue)) {
+-         updateValue(newValue);
+-     }
+- });
+-
+-// Calculate total cost when the page loads
+-document.addEventListener('DOMContentLoaded', () => {
+-    updateTotalCost();
+-});
+-
+-
+-
+ // JavaScript for handling the popup windows
+-    document.getElementById('login').addEventListener('click', function() {
+-        document.getElementById('loginPopup').style.display = 'block';
+-    });
++document.getElementById('login').addEventListener('click', function () {
++    document.getElementById('loginPopup').style.display = 'block';
++});
+ 
+-    function closePopup(popupId) {
+-        document.getElementById(popupId).style.display = 'none';
+-    }
+\ No newline at end of file
++document.getElementById('registerFromLogin').addEventListener('click', function () {
++    document.getElementById('registerPopup').style.display = 'block';
++});
++
++document.getElementById('loginFromRegister').addEventListener('click', function () {
++    document.getElementById('registerPopup').style.display = 'none';
++    document.getElementById('loginPopup').style.display = 'block';
++});
++
++function closePopup(popupId) {
++    document.getElementById(popupId).style.display = 'none';
++}
++
++// Function to handle form submission for user registration
++const registerForm = document.getElementById('registerForm');
++registerForm.addEventListener('submit', function(event) {
++    event.preventDefault(); // Prevent the default form submission behavior
++    const emailInput = document.getElementById('registerEmail').value;
++    const passwordInput = document.getElementById('registerPassword').value;
++    const confirmPasswordInput = document.getElementById('confirmPassword').value;
++
++    // Validate the form inputs
++    if (!emailInput.trim()) {
++        alert('Email is required.');
++        return;
++    }
++    if (!passwordInput.trim()) {
++        alert('Password is required.');
++        return;
++    }
++    if (!confirmPasswordInput.trim()) {
++        alert('Confirm Password is required.');
++        return;
++    }
++    if (passwordInput !== confirmPasswordInput) {
++        alert('Passwords do not match.');
++        return;
++    }
++
++    // Prepare the request body
++    const requestBody = {
++        userName: emailInput,
++        password: passwordInput
++    };
++
++    // Send a POST request to the user registration API
++    fetch('http://localhost:8080/users/register', {
++        method: 'POST',
++        headers: {
++            'Content-Type': 'application/json'
++        },
++        body: JSON.stringify(requestBody)
++    })
++    .then(response => {
++        if (response.ok) {
++            alert('User registered successfully.');
++            document.getElementById('registerPopup').style.display = 'none'; // Hide the registration popup
++        } else {
++            alert('Failed to register user. Please try again.');
++        }
++    })
++    .catch(error => {
++        console.error('Error registering user:', error);
++        alert('An error occurred while registering user. Please try again.');
++    });
++});
++
++// Function to handle form submission for user login
++const loginForm = document.getElementById('loginForm');
++loginForm.addEventListener('submit', function(event) {
++    event.preventDefault(); // Prevent the default form submission behavior
++    const emailInput = document.getElementById('loginEmail').value;
++    const passwordInput = document.getElementById('loginPassword').value;
++
++    // Validate the form inputs
++    if (!emailInput.trim()) {
++        alert('Email is required.');
++        return;
++    }
++    if (!passwordInput.trim()) {
++        alert('Password is required.');
++        return;
++    }
++
++    // Prepare the request body
++    const requestBody = {
++        userName: emailInput,
++        password: passwordInput
++    };
++
++    // Send a POST request to the user login API
++    fetch('http://localhost:8080/users/login', {
++        method: 'POST',
++        headers: {
++            'Content-Type': 'application/json'
++        },
++        body: JSON.stringify(requestBody)
++    })
++    .then(response => {
++        if (response.ok) {
++            alert('Login successful.');
++            document.getElementById('loginPopup').style.display = 'none'; // Hide the login popup
++            updateUIAfterLogin(emailInput.trim()); // Pass the email address without accessing .value
++        } else {
++            alert('Invalid username or password.');
++        }
++    })
++    .catch(error => {
++        console.error('Error logging in:', error);
++        alert('An error occurred while logging in. Please try again.');
++    });
++});
++
++//function updateUIAfterLogin(email) {
++//    const loginButton = document.getElementById('login');
++//    loginButton.textContent = email; // Display the user's email instead of "User Login"
++//
++//    const logoutButton = document.createElement('button');
++//    logoutButton.textContent = 'Logout';
++//    logoutButton.addEventListener('click', function() {
++//        // Handle logout functionality here, such as clearing session data or performing a logout API request
++//        // For now, let's just clear the login state from localStorage
++//        localStorage.removeItem('loggedIn'); // Remove the login state
++//        localStorage.removeItem('userEmail'); // Remove the user's email from localStorage
++//        window.location.reload(); // Refresh the page
++//    });
++//
++//    // Append the logout button next to the login button
++//    loginButton.insertAdjacentElement('afterend', logoutButton);
++//
++//    // Set the login state in localStorage
++//    localStorage.setItem('loggedIn', true);
++//    localStorage.setItem('userEmail', email); // Store the user's email in localStorage
++//}
++
++
++function updateUIAfterLogin(email) {
++    // Set the login state and user email in localStorage first
++    localStorage.setItem('loggedIn', true);
++    localStorage.setItem('userEmail', email);
++
++    const userEmailSpan = document.createElement('span');
++    userEmailSpan.textContent = email;
++    userEmailSpan.id = 'userEmail';
++
++    const logoutButton = document.createElement('button');
++    logoutButton.textContent = 'Logout';
++    logoutButton.id = 'logout';
++    logoutButton.style.float = 'right';
++
++    logoutButton.addEventListener('click', function() {
++        // Handle logout functionality here, such as clearing session data or performing a logout API request
++        // For now, let's just clear the login state from localStorage
++        localStorage.removeItem('loggedIn'); // Remove the login state
++        localStorage.removeItem('userEmail'); // Remove the user's email from localStorage
++        window.location.reload(); // Refresh the page
++    });
++
++    const loginButton = document.getElementById('login');
++    loginButton.parentNode.insertBefore(logoutButton, loginButton.nextSibling);
++    loginButton.parentNode.insertBefore(userEmailSpan, logoutButton);
++    loginButton.style.display = 'none'; // Hide the original login button
++}
++
++
++
++
++
++document.addEventListener("DOMContentLoaded", function () {
++    const loggedIn = localStorage.getItem('loggedIn');
++
++    if (loggedIn) {
++        const email = localStorage.getItem('userEmail'); // Retrieve the user's email from localStorage
++        updateUIAfterLogin(email);
++    } else {
++        // Show the login button
++        const loginButton = document.getElementById('login');
++        loginButton.style.display = 'block'; // or any other appropriate way to display it
++    }
++});
+Index: target/classes/static/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/static/index.html b/target/classes/static/index.html
+--- a/target/classes/static/index.html	
++++ b/target/classes/static/index.html	
+@@ -1,5 +1,3 @@
+-<!-- index.html -->
+-
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+@@ -8,12 +6,14 @@
+     <title>Super Cart</title>
+     <link rel="stylesheet" href="style.css">
+     <script src="script.js" defer></script>
+-
+ </head>
+ <body>
+ 
+-<button id="login" style="float:right">User Login</button>
+-<h1 style="color:Red ;Font-size:60px" ; align="center"> SuperCart</h1>
++<div id="LoginButton">
++    <button id="login" style="float:right">User Login</button>
++</div>
++
++<h1 style="color:Red; font-size:60px; text-align:center;">SuperCart</h1>
+ 
+ <h1>Product List</h1>
+ 
+@@ -21,7 +21,7 @@
+     <label for="searchProduct">Search Products :</label>
+     <input style="width:500px; margin-top:10px" type="text" id="searchProduct" name="searchProduct" placeholder="Enter Product ID or product Name"><br><br>
+ </form>
+-<h1 style="text-align:right; color:blue ; text-decoration:underline"><a href="http://localhost:63342/EcommerceApp/static/cart.html">Shopping Cart</a></h1>
++<h1 style="text-align:right; color:blue; text-decoration:underline;"><a href="http://localhost:63342/EcommerceApp/static/cart.html">Shopping Cart</a></h1>
+ 
+ <div id="productList">
+ </div>
+@@ -29,34 +29,33 @@
+ <!-- Login Popup -->
+ <div id="loginPopup" class="popup">
+     <span class="close" onclick="closePopup('loginPopup')">&times;</span>
+-    <h2>Login</h2>
++    <h2 class="form-title">Login</h2>
+     <form id="loginForm">
+-        <label for="userID">UserID:</label>
+-        <input type="text" id="userID" name="userID"><br><br>
+-        <label for="password">Password:</label>
+-        <input type="password" id="password" name="password"><br><br>
+-        <button type="submit">Sign in</button>
++        <label for="loginEmail">Email:</label>
++        <input type="email" id="loginEmail" name="loginEmail"><br><br>
++        <label for="loginPassword">Password:</label>
++        <input type="password" id="loginPassword" name="loginPassword"><br><br>
++        <button type="submit" class="btn-signin">Sign in</button>
+     </form>
++    <button id="registerFromLogin" class="btn-register">Register New User</button>
+ </div>
+ 
+ <!-- Registration Popup -->
+ <div id="registerPopup" class="popup">
+     <span class="close" onclick="closePopup('registerPopup')">&times;</span>
+-    <h2>Register New User</h2>
++    <h2 class="form-title">Register New User</h2>
+     <form id="registerForm">
+-        <label for="newUserID">UserID:</label>
+-        <input type="text" id="newUserID" name="newUserID"><br><br>
+-        <label for="customerName">Name:</label>
+-        <input type="text" id="customerName" name="customerName"><br><br>
+-        <label for="customerEmail">Email:</label>
+-        <input type="text" id="customerEmail" name="customerEmail"><br><br>
+-        <label for="customerAddress">Address:</label>
+-        <input type="text" id="customerAddress" name="customerAddress"><br><br>
+-        <button type="submit">Register</button>
++        <label for="registerEmail">Email:</label>
++        <input type="email" id="registerEmail" name="registerEmail"><br><br>
++        <label for="registerPassword">Password:</label>
++        <input type="password" id="registerPassword" name="registerPassword"><br><br>
++        <label for="confirmPassword">Confirm Password:</label>
++        <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
++        <button type="submit" class="btn-register">Register</button>
+     </form>
++    <button id="loginFromRegister" class="btn-signin">Sign In</button>
+ </div>
+ 
+ 
+-
+ </body>
+ </html>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,11 +4,14 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="Login and Logout">
++    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="Login and Logout Css Added">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/script.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/style.css" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/static/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/cart.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/static/cartScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/cartScript.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/static/orderItem.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/orderItem.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/script.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/style.css" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -28,7 +31,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="Version-07" />
++        <entry key="$PROJECT_DIR$" value="Version-08" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -143,11 +146,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.EcommerceApplication" />
+         <item itemvalue="JUnit.ProductControllerTest.testSearchProducts" />
+         <item itemvalue="JUnit.ProductControllerTest.testGetProducts" />
+         <item itemvalue="JUnit.ProductControllerTest" />
+         <item itemvalue="JUnit.EcommerceApplicationTests" />
+-        <item itemvalue="Application.EcommerceApplication" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -251,7 +254,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1707219903740</updated>
+     </task>
+-    <option name="localTasksCounter" value="14" />
++    <task id="LOCAL-00014" summary="Login and Logout Css Added">
++      <created>1707225708580</created>
++      <option name="number" value="00014" />
++      <option name="presentableId" value="LOCAL-00014" />
++      <option name="project" value="LOCAL" />
++      <updated>1707225708580</updated>
++    </task>
++    <option name="localTasksCounter" value="15" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -291,7 +301,8 @@
+     <MESSAGE value="Quantity Increase/Decrease Js events added" />
+     <MESSAGE value="Login and Register and Subtotal functionalities added" />
+     <MESSAGE value="Login and Logout" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Login and Logout" />
++    <MESSAGE value="Login and Logout Css Added" />
++    <option name="LAST_COMMIT_MESSAGE" value="Login and Logout Css Added" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+Index: target/classes/static/style.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/static/style.css b/target/classes/static/style.css
+--- a/target/classes/static/style.css	
++++ b/target/classes/static/style.css	
+@@ -242,46 +242,151 @@
+ 
+ 
+ 
+-
+-
+-
+ /* CSS styles for login and registration forms */
+-        /* Positioning and styling for the popup windows */
+-        .popup {
+-            display: none;
+-            position: fixed;
+-            top: 50%;
+-            left: 50%;
+-            transform: translate(-50%, -50%);
+-            background-color: #f9f9f9;
+-            padding: 20px;
+-            border: 1px solid #ccc;
+-            z-index: 1000;
+-        }
++.popup {
++    display: none;
++    position: fixed;
++    top: 50%;
++    left: 50%;
++    transform: translate(-50%, -50%);
++    background-color: #f9f9f9;
++    padding: 20px;
++    border: 16px inset #1C6EA4;
++    border-radius: 16px;
++    z-index: 1000;
++    max-width: 600px;
++}
+ 
+-        .popup label {
+-            display: block;
+-            margin-bottom: 10px;
+-        }
++.popup label {
++    display: block;
++    margin-bottom: 10px;
++}
+ 
+-        .popup input[type="text"],
+-        .popup input[type="password"] {
+-            width: 100%;
+-            padding: 10px;
+-            margin-bottom: 10px;
+-        }
++.popup input[type="text"],
++.popup input[type="password"],
++.popup input[type="email"] {
++    width: calc(100% - 20px);
++    padding: 10px;
++    margin-bottom: 10px;
++}
+ 
+-        .popup button {
+-            padding: 10px 20px;
+-            background-color: #4CAF50;
+-            color: white;
+-            border: none;
+-            cursor: pointer;
+-        }
++.popup button {
++    padding: 10px 20px;
++    background-color: #4CAF50;
++    color: white;
++    border: none;
++    cursor: pointer;
++}
+ 
+-        .close {
+-            position: absolute;
+-            top: 10px;
+-            right: 10px;
+-            cursor: pointer;
+-        }
+\ No newline at end of file
++.close {
++    position: absolute;
++    top: 10px;
++    right: 10px;
++    cursor: pointer;
++    font-size: 20px;
++    line-height: 1;
++}
++
++
++/* Additional CSS styles for login and registration forms */
++
++.form-title {
++    text-align: center;
++    color: #333;
++}
++
++.btn-signin,
++.btn-register {
++    display: block;
++    width: 100%;
++    padding: 10px;
++    margin-top: 20px;
++    background-color: #4CAF50;
++    color: white;
++    border: none;
++    cursor: pointer;
++    transition: background-color 0.3s;
++}
++
++.btn-signin:hover,
++.btn-register:hover {
++    background-color: #45a049;
++}
++
++.btn-register {
++    text-decoration: underline;
++    color: red;
++}
++
++.popup {
++    /* Existing styles */
++    max-width: 500px; /* Increase box size */
++}
++
++.popup button[type="submit"] {
++    /* Additional styles for the submit button */
++    background-color: #3498db;
++    border-radius: 5px;
++    border: 2px solid #3498db;
++    color: white;
++    font-weight: bold;
++}
++
++.popup button[type="submit"]:hover {
++    background-color: #2980b9;
++    border-color: #2980b9;
++}
++
++.popup button#loginFromRegister {
++    /* Styles for the "Sign In" button */
++    float: right;
++    background-color: #e74c3c;
++    border: none;
++    color: white;
++    padding: 10px 20px;
++    margin-top: 10px;
++    cursor: pointer;
++}
++
++.popup button#loginFromRegister:hover {
++    background-color: #c0392b;
++}
++
++
++
++#LoginButton{
++    display:flex;
++    float:right
++}
++
++#login {
++    background-color: #f44336; /* Red background color */
++    color: white; /* White text color */
++    border: none; /* Remove border */
++    padding: 10px 20px; /* Add some padding */
++    cursor: pointer; /* Change cursor to pointer on hover */
++}
++
++
++#userEmail {
++
++    font-weight: bold; /* Make the email text bold */
++    margin-right: 10px; /* Add some space between the email and the logout button */
++    border: 10px outset #6150ff;
++}
++
++#logout {
++    background-color: #f44336; /* Red background color */
++    color: white; /* White text color */
++    border: none; /* Remove border */
++    padding: 10px 20px; /* Add some padding */
++    cursor: pointer; /* Change cursor to pointer on hover */
++}
++
++#logout:hover {
++    background-color: #d32f2f; /* Darker red background color on hover */
++}
++
++
++
++
+Index: target/classes/static/orderItem.html
+===================================================================
+diff --git a/target/classes/static/orderItem.html b/target/classes/static/orderItem.html
+--- a/target/classes/static/orderItem.html	
++++ b/target/classes/static/orderItem.html	
+@@ -6,7 +6,8 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Super Cart</title>
+     <link rel="stylesheet" href="style.css">
+-    <script src="script.js" defer></script>
++    <script src="orderItemScript.js" defer></script>
++<!--    <script src="script.js" defer></script>-->
+ 
+ </head>
+ <body>
+@@ -22,12 +23,7 @@
+ <div id="productDetails">
+     <!-- Product details will be displayed here -->
+ </div>
+-<!--<div style=" display: flex;font-size:10px;padding:10px;">-->
+-<!--    <h2>Quantity : &nbsp; </h2>-->
+-<!--    <button id="minus">−</button>&nbsp;-->
+-<!--    <input type="number" value="1" id="input"/>&nbsp;-->
+-<!--    <button id="plus">+</button>-->
+-<!--</div>-->
++
+ 
+ <div style="display: flex; align-items: center; font-size: 16px;">
+     <h3>Quantity:</h3>
+Index: target/classes/static/cartScript.js
+===================================================================
+diff --git a/target/classes/static/cartScript.js b/target/classes/static/cartScript.js
+--- a/target/classes/static/cartScript.js	
++++ b/target/classes/static/cartScript.js	
+@@ -1,3 +1,116 @@
++
++
++
++
++    //Cart Products Table will display
++    document.addEventListener("DOMContentLoaded", function () {
++        const productList = document.getElementById('cartList');
++
++        // Fetch products from the backend
++        fetch('http://localhost:8080/cart/getAllCartItems')
++            .then(response => response.json())
++            .then(products => {
++                // Update the UI with the product list
++                products.forEach(product => {
++                    const productCard = document.createElement('div');
++                    const productCardImg = document.createElement('div')
++                    const img = document.createElement('img');
++                    const h2 = document.createElement('h2');
++                    const removeButton = document.createElement('button');
++                    const orderButton = document.createElement('button');
++
++                    img.src = product.product.productImage;
++                    img.width = '140';
++                    img.height = '60';
++                    img.align = 'center';
++
++                    productCard.className = 'product-card';
++                    productCard.appendChild(img);
++
++                    productCard.innerHTML += `<p>${product.cartID}</p><p>${product.product.productID}</p><p>  ${product.product.productName}</p><p> Cost: ${product.product.productPrice}</p><p> Quantity: ${product.quantity}</p>`;
++
++                    removeButton.innerText = 'Remove From Cart';
++                    removeButton.addEventListener('click', () => {
++                        removeCartItem(product.cartID);
++                        // Remove the product card from the UI
++                        productCard.remove();
++                        location.reload();
++                    });
++
++
++                    orderButton.innerText = 'Buy';
++                    orderButton.addEventListener('click', function(){
++                         // Construct the URL with product details as query parameters
++                         const orderItemUrl_1 = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.product.productID}&productName=${encodeURIComponent(product.product.productName)}&productPrice=${product.product.productPrice}`;
++                         window.location.href = orderItemUrl_1;
++                     });
++
++                    productCard.appendChild(removeButton);
++                    productCard.appendChild(orderButton);
++                    productList.appendChild(productCard);
++                });
++            })
++            .catch(error => console.error('Error:', error));
++
++        function removeCartItem(cartID) {
++            // Make a DELETE request to remove the item from the cart
++            fetch(`http://localhost:8080/cart/clearCartItem/${cartID}`, {
++                method: 'DELETE',
++            })
++                .then(response => response.json())
++                .then(data => console.log('Item removed from cart:', data))
++                .catch(error => console.error('Error removing item from cart:', error));
++        }
++    });
++
++
++
++
++
++    document.addEventListener("DOMContentLoaded", function() {
++        fetch('http://localhost:8080/cart/getAllCartItems')
++          .then(response => response.json())
++          .then(data => {
++            // Calculate total count
++            const totalCount = data.reduce((acc, item) => acc + item.quantity, 0);
++            console.log('totalCount - ', totalCount);
++
++            // Update the content of the HTML element
++            const totalItemsElement = document.getElementById('totalItems');
++            totalItemsElement.textContent = `Total Items In Cart - ${totalCount}`;
++          })
++          .catch(error => console.error('Error:', error));
++    });
++
++
++
++    // Function to Delete All Products
++     function deleteAllProducts() {
++            fetch('http://localhost:8080/cart/clearCart', {
++                method: 'DELETE'
++            })
++            .then(response => {
++                if (!response.ok) {
++                    throw new Error('Network response was not ok');
++                }
++
++                    location.reload();
++            })
++            .catch(error => {
++                console.error('Error:', error);
++            });
++        }
++
++
++
++
++
++
++
++
++
++
++
+ 
+ 
+ // Function to fetch subtotal amount from API
+@@ -23,3 +136,6 @@
+     console.log('Window loaded. Fetching subtotal...');
+     fetchSubTotal();
+ };
++
++
++
+Index: target/classes/static/cart.html
+===================================================================
+diff --git a/target/classes/static/cart.html b/target/classes/static/cart.html
+--- a/target/classes/static/cart.html	
++++ b/target/classes/static/cart.html	
+@@ -7,7 +7,7 @@
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Shopping Cart</title>
+     <link rel="stylesheet" href="style.css">
+-    <script src="script.js" defer></script>
++<!--    <script src="script.js" defer></script>-->
+     <script src="cartScript.js" defer></script>
+ 
+ </head>
