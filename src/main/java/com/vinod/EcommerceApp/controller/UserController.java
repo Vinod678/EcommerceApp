@@ -2,10 +2,7 @@ package com.vinod.EcommerceApp.controller;
 
 import com.vinod.EcommerceApp.model.User.UserEntity;
 import com.vinod.EcommerceApp.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,5 +28,11 @@ public class UserController {
         } else {
             return ResponseEntity.status(401).body("Invalid username or password");
         }
+    }
+//    http://localhost:8080/users/getUserIdByUserEmail?userEmail=jjkk4@gmail.com
+    @GetMapping("/getUserIdByUserEmail")
+    public Integer getUserIdByUserEmail(@RequestParam String userEmail){
+        Integer userId = userService.getUserIdByUserEmail(userEmail);
+        return userId;
     }
 }

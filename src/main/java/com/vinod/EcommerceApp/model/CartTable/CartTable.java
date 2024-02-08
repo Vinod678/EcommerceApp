@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.vinod.EcommerceApp.model.ProductTable.ProductTable;
+import com.vinod.EcommerceApp.model.User.UserEntity;
 import jakarta.persistence.*;
 
 
@@ -20,6 +21,10 @@ public class CartTable {
     @ManyToOne
     @JoinColumn(name = "productID", nullable = false)
     private ProductTable product;
+
+    @ManyToOne // Add Many-to-One mapping with UserEntity
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user; // Add reference to UserEntity
 
     @Column(name = "quantity")
     private int quantity;
@@ -38,6 +43,14 @@ public class CartTable {
 
     public void setProduct(ProductTable product) {
         this.product = product;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
     public int getQuantity() {

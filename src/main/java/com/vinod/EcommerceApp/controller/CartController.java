@@ -1,6 +1,8 @@
 package com.vinod.EcommerceApp.controller;
 
+import com.vinod.EcommerceApp.model.User.UserEntity;
 import com.vinod.EcommerceApp.service.CartTableService;
+import com.vinod.EcommerceApp.service.UserService;
 import org.apache.coyote.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,21 +24,21 @@ public class CartController {
 
     @Autowired
     private CartTableService cartTableService;
+    @Autowired
+    private UserService userService;
 
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     @PostMapping("/addToCart")
-    public ResponseEntity<String> addToCart(@RequestBody CartTable cartItem) {
+    public ResponseEntity<String> addToCart(@RequestBody CartTable cartItem, @RequestParam Long userId) {
         try {
-            cartTableService.addToCart(cartItem);
+            UserEntity user = userService.getUserById(userId);
+            cartTableService.addToCart(cartItem, user);
             logger.info("Item added to cart Successfully");
             return ResponseEntity.ok("Item added to cart successfully");
-        }
-        catch (IllegalArgumentException ex) {
-            //IllegalArgumentException and return a custom error response
-            logger.info("Error: " + ex.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error: " + ex.getMessage());
+        } catch (IllegalArgumentException ex) {
+            // Handle exception
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error: " + ex.getMessage());
         }
     }
 

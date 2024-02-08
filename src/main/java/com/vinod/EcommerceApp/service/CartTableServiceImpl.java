@@ -1,7 +1,9 @@
+
 package com.vinod.EcommerceApp.service;
 
 import com.vinod.EcommerceApp.model.CartTable.CartTable;
 import com.vinod.EcommerceApp.model.ProductTable.ProductTable;
+import com.vinod.EcommerceApp.model.User.UserEntity;
 import com.vinod.EcommerceApp.repository.CartRepository;
 import com.vinod.EcommerceApp.repository.ProductTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +21,10 @@ public class CartTableServiceImpl implements CartTableService {
 
     @Autowired
     private ProductTableService productTableService;
-
     @Override
-    public void addToCart(CartTable cartItem) {
+    public void addToCart(CartTable cartItem, UserEntity user) {
         validateCartItem(cartItem);
+        cartItem.setUser(user); // Set the user property
         handleDuplicateCartItem(cartItem);
         cartRepository.save(cartItem);
     }

@@ -31,4 +31,21 @@ public class UserServiceImpl implements UserService {
         // Check if the user exists and the provided password matches
         return storedUser != null && storedUser.getPassword().equals(user.getPassword());
     }
+    @Override
+    public UserEntity getUserById(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found with ID: " + userId));
+    }
+
+@Override
+public Integer getUserIdByUserEmail(String userEmail) {
+    UserEntity user = userRepository.findByUserEmail(userEmail);
+    if (user != null) {
+        return user.getUserId().intValue();
+    } else {
+        throw new IllegalArgumentException("User not found with Email: " + userEmail);
+    }
+}
+
+
 }

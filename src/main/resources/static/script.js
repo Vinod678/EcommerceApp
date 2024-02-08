@@ -48,7 +48,7 @@
                         addButton.innerText = 'Add To Cart';
                         orderButton.innerText = 'Buy';
                         addButton.addEventListener('click', () => {
-                            addToCartItem(product.productID);
+                            addToCartItem(product.productID,product.productName,product.productDescription,product.productPrice,product.noOfProductsAvailable,product.productImage);
                         });
 
                         orderButton.addEventListener('click', function(){
@@ -65,9 +65,17 @@
                 .catch(error => console.error('Error:', error));
         }
 
-        function addToCartItem(productID) {
+
+
+
+
+        function addToCartItem(productID,productName,productDescription,productPrice,noOfProductsAvailable,productImage) {
+            // Retrieve the userId from localStorage
+           const userId = localStorage.getItem('userId');
+            const url = `http://localhost:8080/cart/addToCart?userId=${userId}`;
+
             // Make a POST request to add the item to the cart
-            fetch('http://localhost:8080/cart/addToCart', {
+            fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -75,7 +83,13 @@
                 body: JSON.stringify({
                     product: {
                         productID: productID,
+                        productName: productName,
+                        productDescription: productDescription,
+                        productPrice: productPrice,
+                        noOfProductsAvailable: noOfProductsAvailable,
+                        productImage: productImage
                     },
+                    userId: userId, // Pass userId as a parameter
                     quantity: 1, // You can set the quantity as needed
                 }),
             })
@@ -84,6 +98,45 @@
                 .catch(error => console.error('Error adding item to cart:', error));
         }
     });
+
+
+
+
+//    Making call to getUserIdByUserEmail to fetch the userID
+    // Retrieve the userEmail from localStorage
+    const userEmail = localStorage.getItem('userEmail');
+
+    if (userEmail) {
+      // Construct the URL for the API request
+      const url = `http://localhost:8080/users/getUserIdByUserEmail?userEmail=${userEmail}`;
+
+      // Make the API request
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          const userId = data; // Assuming data returned by the API is the userId
+          localStorage.setItem('userId', userId);
+          console.log('userId stored in localStorage:', userId);
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+        });
+    } else {
+      console.error('userEmail not found in localStorage');
+    }
+
+
+
+
+
+
+
+
 
 // JavaScript for handling the Login -Register popup windows
 document.getElementById('login').addEventListener('click', function () {
@@ -245,6 +298,7 @@ function updateUIAfterLogin(email) {
         // For now, let's just clear the login state from localStorage
         localStorage.removeItem('loggedIn'); // Remove the login state
         localStorage.removeItem('userEmail'); // Remove the user's email from localStorage
+        localStorage.removeItem('userId'); // Remove the user's Id from localStorage
         window.location.reload(); // Refresh the page
     });
 

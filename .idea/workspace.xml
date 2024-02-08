@@ -4,42 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="userProfileEntity - update user details">
+    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="updateUserProfileByUserEmail has updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/model/CartTable/CartTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/model/CartTable/CartTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/model/User/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/model/User/UserEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/model/User/UserProfileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/model/User/UserProfileEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserProfileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserProfileServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/EcommerceApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/controller/CartController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/controller/ProductController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/controller/UserController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/CartTable/CartTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/CustomerTable/customerTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/OrderTable/orderTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/PaymentDetailsTable/paymentDetailsTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/PriceTable/priceTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/ProductTable/ProductTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/User/UserEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/originModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/repository/CartRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/repository/ProductTableRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/repository/UserRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/CartTableService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/CartTableServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/ProductTableService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/ProductTableServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/UserServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logback.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/cart.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/cartScript.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/orderItem.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/vinod/EcommerceApp/EcommerceApplicationTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/vinod/EcommerceApp/ProductControllerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/controller/CartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/controller/CartController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/CartTable/CartTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/CartTable/CartTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/User/UserEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/User/UserEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/CartTableService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/CartTableService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/CartTableServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/CartTableServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +44,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Version-07" />
+        <entry key="$PROJECT_DIR$" value="Version-09" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -296,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707289555312</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="updateUserProfileByUserEmail has updated">
+      <created>1707398650301</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1707398650301</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -310,7 +302,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="HEAD" />
+                        <option value="Version-09" />
                       </list>
                     </value>
                   </entry>
@@ -338,14 +330,15 @@
     <MESSAGE value="Login and Logout" />
     <MESSAGE value="UserProfile Entity Created" />
     <MESSAGE value="userProfileEntity - update user details" />
-    <option name="LAST_COMMIT_MESSAGE" value="userProfileEntity - update user details" />
+    <MESSAGE value="updateUserProfileByUserEmail has updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="updateUserProfileByUserEmail has updated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/CartController.java</url>
-          <line>43</line>
+          <line>45</line>
           <properties class="com.vinod.EcommerceApp.controller.CartController" method="getAllCartItems">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -354,7 +347,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java</url>
-          <line>60</line>
+          <line>62</line>
           <properties class="com.vinod.EcommerceApp.service.CartTableServiceImpl" method="getAllCartItems">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -381,7 +374,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java</url>
-          <line>61</line>
+          <line>63</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
