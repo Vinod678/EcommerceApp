@@ -22,22 +22,18 @@ public class UserProfileServiceImpl implements UserProfileService {
     private UserProfileRepository userProfileRepository;
     @Override
     public void updateUserProfileByUserEmail(String userEmail, UserProfileEntity userProfile) {
-        // Check if the user profile already exists for the given email
-        Optional<UserProfileEntity> userProfileOptional = userProfileRepository.findByUserEmail(userEmail);
-        if (userProfileOptional.isPresent()) {
-            // Get the existing user profile
-            UserProfileEntity existingProfile = userProfileOptional.get();
-
-            // Update the existing user profile with the new data
-            existingProfile.setUserName(userProfile.getUserName());
-            existingProfile.setUserPhoneNumber(userProfile.getUserPhoneNumber());
-            existingProfile.setUserAddress(userProfile.getUserAddress());
-
-            // Save the updated user profile
-            userProfileRepository.save(existingProfile);
-        } else {
-            throw new IllegalArgumentException("User profile not found for email: " + userEmail);
+        // Check if the user with the provided email exists in the UserEntity
+        UserEntity userEntity = userRepository.findByUserEmail(userEmail);
+        if (userEntity == null) {
+            throw new IllegalArgumentException("User with Email " + userEmail + " does not exist.");
         }
+
+        // Set userId and userEmail from UserEntity
+        userProfile.setUserEmail(userEmail);
+        userProfile.setUserId(userEntity.getUserId());
+
+        // Save the updated user profile
+        userProfileRepository.save(userProfile);
     }
 
 

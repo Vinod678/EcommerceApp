@@ -6,13 +6,40 @@
   <component name="ChangeListManager">
     <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="userProfileEntity - update user details">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/UserProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/UserProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/repository/UserProfileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/repository/UserProfileRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserProfileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserProfileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/model/User/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/model/User/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/model/User/UserProfileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/model/User/UserProfileEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserProfileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserProfileServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/EcommerceApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/controller/CartController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/controller/ProductController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/CartTable/CartTable.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/CustomerTable/customerTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/OrderTable/orderTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/PaymentDetailsTable/paymentDetailsTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/PriceTable/priceTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/ProductTable/ProductTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/User/UserEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/originModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/repository/CartRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/repository/ProductTableRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/repository/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/CartTableService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/CartTableServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/ProductTableService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/ProductTableServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/service/UserServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/cart.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/cartScript.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/orderItem.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/vinod/EcommerceApp/EcommerceApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/vinod/EcommerceApp/ProductControllerTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -334,10 +361,38 @@
           </properties>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserProfileServiceImpl.java</url>
+          <line>40</line>
+          <properties class="com.vinod.EcommerceApp.service.UserProfileServiceImpl" method="getUserProfileByEmail">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/UserProfileController.java</url>
+          <line>29</line>
+          <properties class="com.vinod.EcommerceApp.controller.UserProfileController" method="getUserProfileByEmail">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/CartTableServiceImpl.java</url>
           <line>61</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/UserProfileController.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserProfileServiceImpl.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

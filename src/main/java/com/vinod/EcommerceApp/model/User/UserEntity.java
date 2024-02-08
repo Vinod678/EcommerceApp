@@ -11,6 +11,8 @@ public class UserEntity {
     private String userEmail;
     private String password;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private UserProfileEntity userProfile;
     public Long getUserId() {
         return userId;
     }
@@ -34,4 +36,12 @@ public class UserEntity {
     public void setPassword(String password) {
         this.password = password;
     }
+
+//    public UserProfileEntity getUserProfile() {
+//        return userProfile;
+//    }
+//
+//    public void setUserProfile(UserProfileEntity userProfile) {
+//        this.userProfile = userProfile;
+//    }
 }
