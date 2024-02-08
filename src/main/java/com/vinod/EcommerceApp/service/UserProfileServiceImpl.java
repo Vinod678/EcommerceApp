@@ -20,20 +20,35 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Autowired
     private UserProfileRepository userProfileRepository;
+    @Override
+    public void updateUserProfileByUserEmail(String userEmail, UserProfileEntity userProfile) {
+        // Check if the user profile already exists for the given email
+        Optional<UserProfileEntity> userProfileOptional = userProfileRepository.findByUserEmail(userEmail);
+        if (userProfileOptional.isPresent()) {
+            // Get the existing user profile
+            UserProfileEntity existingProfile = userProfileOptional.get();
+
+            // Update the existing user profile with the new data
+            existingProfile.setUserName(userProfile.getUserName());
+            existingProfile.setUserPhoneNumber(userProfile.getUserPhoneNumber());
+            existingProfile.setUserAddress(userProfile.getUserAddress());
+
+            // Save the updated user profile
+            userProfileRepository.save(existingProfile);
+        } else {
+            throw new IllegalArgumentException("User profile not found for email: " + userEmail);
+        }
+    }
+
 
     @Override
-    public void updateUserProfile(Long userId, UserProfileEntity userProfile) {
-        // Check if the userId exists in the UserEntity
-        Optional<UserEntity> userOptional = userRepository.findById(userId);
-        if (userOptional.isEmpty()) {
-            throw new IllegalArgumentException("User with ID " + userId + " does not exist.");
+    public UserProfileEntity getUserProfileByEmail(String userEmail) {
+        Optional<UserProfileEntity> userProfileOptional = userProfileRepository.findByUserEmail(userEmail);
+        if (userProfileOptional.isPresent()) {
+            return userProfileOptional.get();
+        } else {
+            throw new IllegalArgumentException("User profile not found for email: " + userEmail);
         }
-
-        // Set userId and userEmail from UserEntity
-        userProfile.setUserId(userId);
-        userProfile.setUserEmail(userOptional.get().getUserEmail());
-
-        // Save the updated user profile
-        userProfileRepository.save(userProfile);
     }
+
 }

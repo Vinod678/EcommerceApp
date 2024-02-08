@@ -85,7 +85,7 @@
         }
     });
 
-// JavaScript for handling the popup windows
+// JavaScript for handling the Login -Register popup windows
 document.getElementById('login').addEventListener('click', function () {
     document.getElementById('loginPopup').style.display = 'block';
 });
@@ -103,7 +103,7 @@ function closePopup(popupId) {
     document.getElementById(popupId).style.display = 'none';
 }
 
-// Function to handle form submission for user registration
+// Function to handle form submission for USER REGISTRATION
 const registerForm = document.getElementById('registerForm');
 registerForm.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
@@ -157,7 +157,8 @@ registerForm.addEventListener('submit', function(event) {
     });
 });
 
-// Function to handle form submission for user login
+
+// Function to handle form submission for USER LOGIN
 const loginForm = document.getElementById('loginForm');
 loginForm.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
@@ -203,28 +204,6 @@ loginForm.addEventListener('submit', function(event) {
     });
 });
 
-//function updateUIAfterLogin(email) {
-//    const loginButton = document.getElementById('login');
-//    loginButton.textContent = email; // Display the user's email instead of "User Login"
-//
-//    const logoutButton = document.createElement('button');
-//    logoutButton.textContent = 'Logout';
-//    logoutButton.addEventListener('click', function() {
-//        // Handle logout functionality here, such as clearing session data or performing a logout API request
-//        // For now, let's just clear the login state from localStorage
-//        localStorage.removeItem('loggedIn'); // Remove the login state
-//        localStorage.removeItem('userEmail'); // Remove the user's email from localStorage
-//        window.location.reload(); // Refresh the page
-//    });
-//
-//    // Append the logout button next to the login button
-//    loginButton.insertAdjacentElement('afterend', logoutButton);
-//
-//    // Set the login state in localStorage
-//    localStorage.setItem('loggedIn', true);
-//    localStorage.setItem('userEmail', email); // Store the user's email in localStorage
-//}
-
 
 function updateUIAfterLogin(email) {
     // Set the login state and user email in localStorage first
@@ -236,12 +215,25 @@ function updateUIAfterLogin(email) {
     userEmailSpan.id = 'userEmail';
     userEmailSpan.style.cursor = 'pointer'; // Add pointer cursor for indicating clickability
 
-        // Add click event listener to the user email span
-        userEmailSpan.addEventListener('click', function() {
-            // Show the popup for updating additional customer details
-            document.getElementById('updateCustomerDetailsPopup').style.display = 'block';
-        });
+    // Add click event listener to the user email span
+    userEmailSpan.addEventListener('click', function() {
+        // Show the popup for updating additional customer details
+        document.getElementById('updateCustomerDetailsPopup').style.display = 'block';
 
+        // Fetch user details and populate the form fields
+        fetch(`http://localhost:8080/user-profile/${email}`)
+        .then(response => response.json())
+        .then(data => {
+            // Populate form fields with user details
+            document.getElementById('customerName').value = data.userName;
+            document.getElementById('customerPhoneNumber').value = data.userPhoneNumber;
+            document.getElementById('customerAddress').value = data.userAddress;
+        })
+        .catch(error => {
+            console.error('Error fetching user details:', error);
+            alert('Please update your details.');
+        });
+    });
 
     const logoutButton = document.createElement('button');
     logoutButton.textContent = 'Logout';
@@ -265,7 +257,6 @@ function updateUIAfterLogin(email) {
 
 
 
-
 document.addEventListener("DOMContentLoaded", function () {
     const loggedIn = localStorage.getItem('loggedIn');
 
@@ -277,4 +268,61 @@ document.addEventListener("DOMContentLoaded", function () {
         const loginButton = document.getElementById('login');
         loginButton.style.display = 'block'; // or any other appropriate way to display it
     }
+});
+
+
+
+// Function to handle form submission for user profile details update - name , phoneNumber, address
+const updateCustomerDetailsForm = document.getElementById('updateCustomerDetailsForm');
+updateCustomerDetailsForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    const customerNameInput = document.getElementById('customerName').value;
+    const customerPhoneNumberInput = document.getElementById('customerPhoneNumber').value;
+    const customerAddressInput = document.getElementById('customerAddress').value;
+
+    // Validate the form inputs
+    if (!customerNameInput.trim()) {
+        alert('Name is required.');
+        return;
+    }
+    if (!customerPhoneNumberInput.trim()) {
+        alert('Phone Number is required.');
+        return;
+    }
+    if (!customerAddressInput.trim()){
+        alert('Address is required');
+        return;
+    }
+
+    // Retrieve userEmail from localStorage
+    const userEmail = localStorage.getItem('userEmail');
+
+    // Prepare the request body
+    const requestBody = {
+        userName: customerNameInput,
+        userPhoneNumber: customerPhoneNumberInput,
+        userAddress: customerAddressInput
+    };
+
+    // Send a POST request to update user profile
+    fetch(`http://localhost:8080/user-profile/update/${userEmail}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('User Details updated successfully.');
+            document.getElementById('updateCustomerDetailsForm').reset(); // Reset form after successful update
+            document.getElementById('updateCustomerDetailsPopup').style.display = 'none'; // Hide the popup
+        } else {
+            alert('Failed to update user details. Please try again.');
+        }
+    })
+    .catch(error => {
+        console.error('Error updating details:', error);
+        alert('An error occurred while updating details. Please try again.');
+    });
 });

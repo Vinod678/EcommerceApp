@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="UserProfile Entity Created">
+    <list default="true" id="8ea1d43d-393c-4b35-9c95-dc79d4edc508" name="Changes" comment="userProfileEntity - update user details">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/UserProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/controller/UserProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/model/User/UserProfileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/model/User/UserProfileEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/repository/UserProfileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/repository/UserProfileRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserProfileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserProfileService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserProfileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinod/EcommerceApp/service/UserProfileServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vinod/EcommerceApp/model/CustomerTable/customerTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707286284381</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="userProfileEntity - update user details">
+      <created>1707289555312</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1707289555312</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -301,7 +310,8 @@
     <MESSAGE value="Login and Register and Subtotal functionalities added" />
     <MESSAGE value="Login and Logout" />
     <MESSAGE value="UserProfile Entity Created" />
-    <option name="LAST_COMMIT_MESSAGE" value="UserProfile Entity Created" />
+    <MESSAGE value="userProfileEntity - update user details" />
+    <option name="LAST_COMMIT_MESSAGE" value="userProfileEntity - update user details" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

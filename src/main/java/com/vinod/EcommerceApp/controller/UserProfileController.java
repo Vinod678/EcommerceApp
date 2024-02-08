@@ -16,13 +16,24 @@ public class UserProfileController {
     @Autowired
     private UserProfileService userProfileService;
 
-    @PostMapping("/update/{userId}")
-    public ResponseEntity<String> updateUserProfile(@PathVariable Long userId, @RequestBody UserProfileEntity userProfile) {
+    @PostMapping("/update/{userEmail}")
+    public ResponseEntity<String> updateUserProfileByUserEmail(@PathVariable String userEmail, @RequestBody UserProfileEntity userProfile) {
         try {
-            userProfileService.updateUserProfile(userId, userProfile);
+            userProfileService.updateUserProfileByUserEmail(userEmail, userProfile);
             return ResponseEntity.ok("User profile updated successfully");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
+
+    @GetMapping("/{userEmail}")
+    public ResponseEntity<UserProfileEntity> getUserProfileByEmail(@PathVariable String userEmail) {
+        try {
+            UserProfileEntity userProfile = userProfileService.getUserProfileByEmail(userEmail);
+            return ResponseEntity.ok(userProfile);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
