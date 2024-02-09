@@ -45,8 +45,11 @@
 
                         productCard.innerHTML += `<p>${product.productID}</p><p>  ${product.productName}</p><p> Cost: ${product.productPrice}</p><p> Quantity: ${product.noOfProductsAvailable}</p>`;
 
-                        addButton.innerText = 'Add To Cart';
-                        orderButton.innerText = 'Buy';
+                        const loggedIn = localStorage.getItem('loggedIn');
+
+                        if(loggedIn){
+                            addButton.innerText = 'Add To Cart';
+                            orderButton.innerText = 'Buy';
                         addButton.addEventListener('click', () => {
                             addToCartItem(product.productID,product.productName,product.productDescription,product.productPrice,product.noOfProductsAvailable,product.productImage);
                         });
@@ -56,9 +59,9 @@
                                                 const orderItemUrl = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.productID}&productName=${encodeURIComponent(product.productName)}&productPrice=${product.productPrice}`;
                                                 window.location.href = orderItemUrl;
                                             });
-
                         productCard.appendChild(addButton);
                         productCard.appendChild(orderButton);
+                        }
                         productList.appendChild(productCard);
                     });
                 })
@@ -105,6 +108,9 @@
 //    Making call to getUserIdByUserEmail to fetch the userID
     // Retrieve the userEmail from localStorage
     const userEmail = localStorage.getItem('userEmail');
+    const loggedIn = localStorage.getItem('loggedIn');
+
+    if(loggedIn){
 
     if (userEmail) {
       // Construct the URL for the API request
@@ -128,6 +134,7 @@
         });
     } else {
       console.error('userEmail not found in localStorage');
+    }
     }
 
 
@@ -247,6 +254,7 @@ loginForm.addEventListener('submit', function(event) {
             alert('Login successful.');
             document.getElementById('loginPopup').style.display = 'none'; // Hide the login popup
             updateUIAfterLogin(emailInput.trim()); // Pass the email address without accessing .value
+            window.location.reload(); // Refresh the page after successful login
         } else {
             alert('Invalid username or password.');
         }
