@@ -102,6 +102,16 @@
         }
     });
 
+    //Shopping Cart will only visible if User Logins
+      document.addEventListener("DOMContentLoaded", function() {
+            const loggedIn = localStorage.getItem('loggedIn');
+            const shoppingCartDiv = document.getElementById('shoppingCart');
+
+            if (loggedIn) {
+                shoppingCartDiv.style.display = 'block';
+            }
+        });
+
 
 
 
