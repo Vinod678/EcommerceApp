@@ -1,6 +1,7 @@
 package com.vinod.EcommerceApp.model.CartTable;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.vinod.EcommerceApp.model.ProductTable.ProductTable;
@@ -22,9 +23,12 @@ public class CartTable {
     @JoinColumn(name = "productID", nullable = false)
     private ProductTable product;
 
-    @ManyToOne // Add Many-to-One mapping with UserEntity
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity user; // Add reference to UserEntity
+    // Add Many-to-One mapping with UserEntity
+    // Remove @JsonManagedReference annotation if present
+    @JsonIgnore // Exclude this field from JSON serialization
+    private UserEntity user;
 
     @Column(name = "quantity")
     private int quantity;

@@ -25,7 +25,7 @@ public class CartTableServiceImpl implements CartTableService {
     public void addToCart(CartTable cartItem, UserEntity user) {
         validateCartItem(cartItem);
         cartItem.setUser(user); // Set the user property
-        handleDuplicateCartItem(cartItem);
+        handleDuplicateCartItem(cartItem, user.getId()); // Pass userId to check for duplicates
         cartRepository.save(cartItem);
     }
     private void validateCartItem(CartTable cartItem) {
@@ -46,13 +46,14 @@ public class CartTableServiceImpl implements CartTableService {
         }
     }
 
-    private void handleDuplicateCartItem(CartTable cartItem) {
+    private void handleDuplicateCartItem(CartTable cartItem, Long userId) {
         String productIdString = cartItem.getProduct().getProductID();
         Long productId = Long.valueOf(productIdString);
 
-        Optional<CartTable> existingCartItem = cartRepository.findByProductProductID(String.valueOf(productId));
+        // Check if any cart item already exists for the given user and product ID
+        Optional<CartTable> existingCartItem = cartRepository.findByUserIdAndProduct_ProductID(userId, String.valueOf(productId));
 
-        // If a cart item with the same product ID already exists
+        // If a cart item with the same product ID already exists for the given user
         if (existingCartItem.isPresent()) {
             // For example, you can update the quantity of the existing item instead of adding a new one
             throw new IllegalArgumentException("Duplicate cart item: Product already exists in the cart.");
@@ -60,8 +61,8 @@ public class CartTableServiceImpl implements CartTableService {
     }
 
     @Override
-    public List<CartTable> getAllCartItems() {
-        return cartRepository.findAll();
+    public List<CartTable> getAllCartItemsByUserId(Long userId) {
+        return cartRepository.findByUserId(userId);
     }
 
     @Override
@@ -70,16 +71,17 @@ public class CartTableServiceImpl implements CartTableService {
     }
 
     @Override
-    public void clearCart() {
-        cartRepository.deleteAll();
+    public void clearCart(Long userId) {
+        List<CartTable> cartItems = cartRepository.findByUserId(userId);
+        cartRepository.deleteAll(cartItems);
     }
 
     @Override
-    public Double subTotalCost() {
+    public Double subTotalCost(Long userId) {
         Double subTotal = 0.0; // Use Double instead of Integer to handle decimal values
 
         // Retrieve all cart items
-        List<CartTable> cartItems = getAllCartItems();
+        List<CartTable> cartItems = getAllCartItemsByUserId(userId);
 
         // Iterate over each cart item
         for (CartTable cartItem : cartItems) {

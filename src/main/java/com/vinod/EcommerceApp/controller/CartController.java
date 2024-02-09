@@ -41,10 +41,9 @@ public class CartController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error: " + ex.getMessage());
         }
     }
-
     @GetMapping("/getAllCartItems")
-    public ResponseEntity<List<CartTable>> getAllCartItems() {
-        List<CartTable> cartItems = cartTableService.getAllCartItems();
+    public ResponseEntity<List<CartTable>> getAllCartItems(@RequestParam Long userId) {
+        List<CartTable> cartItems = cartTableService.getAllCartItemsByUserId(userId);
         // Calculate total count
         int totalCount = 0;
         for (CartTable cartItem : cartItems) {
@@ -53,13 +52,12 @@ public class CartController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-Total-Count", String.valueOf(totalCount));
-        //return ResponseEntity.ok(cartItems);
         return new ResponseEntity<>(cartItems, headers, HttpStatus.OK);
     }
 
     @DeleteMapping("/clearCart")
-    public ResponseEntity<String> clearCart() {
-        cartTableService.clearCart();
+    public ResponseEntity<String> clearCart(@RequestParam Long userId) {
+        cartTableService.clearCart(userId);
         return ResponseEntity.ok("Cart cleared successfully");
     }
     @DeleteMapping("/clearCartItem/{cartID}")
@@ -69,8 +67,8 @@ public class CartController {
     }
 
     @GetMapping("/subTotalAmount")
-    public ResponseEntity<Double> subTotalAmount() {
-        Double subTotalCost = cartTableService.subTotalCost();
+    public ResponseEntity<Double> subTotalAmount(@RequestParam Long userId) {
+        Double subTotalCost = cartTableService.subTotalCost(userId);
         return ResponseEntity.ok(subTotalCost);
     }
 

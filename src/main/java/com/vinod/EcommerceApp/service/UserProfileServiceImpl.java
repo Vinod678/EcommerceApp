@@ -30,7 +30,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 
         // Set userId and userEmail from UserEntity
         userProfile.setUserEmail(userEmail);
-        userProfile.setUserId(userEntity.getUserId());
+        userProfile.setUserId(userEntity.getId());
 
         // Save the updated user profile
         userProfileRepository.save(userProfile);

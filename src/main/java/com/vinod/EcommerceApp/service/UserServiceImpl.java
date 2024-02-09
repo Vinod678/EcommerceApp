@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
 public Integer getUserIdByUserEmail(String userEmail) {
     UserEntity user = userRepository.findByUserEmail(userEmail);
     if (user != null) {
-        return user.getUserId().intValue();
+        return user.getId().intValue();
     } else {
         throw new IllegalArgumentException("User not found with Email: " + userEmail);
     }

@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface CartTableService {
     void addToCart(CartTable cartItem, UserEntity user);
-    List<CartTable> getAllCartItems();
+    List<CartTable> getAllCartItemsByUserId(Long userId);
     void clearCartSingleItem(Long cartID);
-    void clearCart();
-    Double subTotalCost();
+    void clearCart(Long userId);
+    Double subTotalCost(Long userId);
 }

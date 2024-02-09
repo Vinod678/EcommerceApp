@@ -5,9 +5,12 @@
     //Cart Products Table will display
     document.addEventListener("DOMContentLoaded", function () {
         const productList = document.getElementById('cartList');
+        const userId = localStorage.getItem('userId');
+        const url = `http://localhost:8080/cart/getAllCartItems?userId=${userId}`;
+//        const url = `http://localhost:8080/users/getUserIdByUserEmail?userEmail=${userEmail}`;
 
         // Fetch products from the backend
-        fetch('http://localhost:8080/cart/getAllCartItems')
+        fetch(url)
             .then(response => response.json())
             .then(products => {
                 // Update the UI with the product list
@@ -68,7 +71,9 @@
 
 
     document.addEventListener("DOMContentLoaded", function() {
-        fetch('http://localhost:8080/cart/getAllCartItems')
+     const userId = localStorage.getItem('userId');
+            const url = `http://localhost:8080/cart/getAllCartItems?userId=${userId}`;
+        fetch(url)
           .then(response => response.json())
           .then(data => {
             // Calculate total count
@@ -86,7 +91,9 @@
 
     // Function to Delete All Products
      function deleteAllProducts() {
-            fetch('http://localhost:8080/cart/clearCart', {
+     const userId = localStorage.getItem('userId');
+     const url = `http://localhost:8080/cart/clearCart?userId=${userId}`
+            fetch(url, {
                 method: 'DELETE'
             })
             .then(response => {
@@ -116,9 +123,11 @@
 // Function to fetch subtotal amount from API
 function fetchSubTotal() {
     console.log('Fetching subtotal...');
+    const userId = localStorage.getItem('userId');
+    const url = `http://localhost:8080/cart/subTotalAmount?userId=${userId}`;
 
     // Make AJAX request to fetch subtotal amount
-    fetch('http://localhost:8080/cart/subTotalAmount')
+    fetch(url)
         .then(response => {
             console.log('Response status:', response.status);
             return response.json();

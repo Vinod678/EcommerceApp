@@ -8,8 +8,9 @@ import java.util.Set;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userId")
-    private Long userId;
+    @Column(name = "userId") // Make sure the column name matches your database schema
+    private Long id; // Change the property name to 'id'
+
     private String userEmail;
     private String password;
 
@@ -17,14 +18,15 @@ public class UserEntity {
     private UserProfileEntity userProfile;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<CartTable> cartEntries; // Add reference to CartTable
+    private Set<CartTable> cartEntries;
+
     // Getters and setters
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUserEmail() {
@@ -43,16 +45,9 @@ public class UserEntity {
         this.password = password;
     }
 
-//    public UserProfileEntity getUserProfile() {
-//        return userProfile;
-//    }
-//
-//    public void setUserProfile(UserProfileEntity userProfile) {
-//        this.userProfile = userProfile;
-//    }
     public Set<CartTable> getCartEntries() {
         return cartEntries;
-}
+    }
 
     public void setCartEntries(Set<CartTable> cartEntries) {
         this.cartEntries = cartEntries;
