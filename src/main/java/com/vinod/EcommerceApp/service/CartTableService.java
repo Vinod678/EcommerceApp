@@ -9,6 +9,9 @@ public interface CartTableService {
     void addToCart(CartTable cartItem, UserEntity user);
     List<CartTable> getAllCartItemsByUserId(Long userId);
     void clearCartSingleItem(Long cartID);
+    void clearCartSingleItemByProductId(Long userId,String productId);
+
     void clearCart(Long userId);
     Double subTotalCost(Long userId);
+    Boolean checkIfProductInCart(Long userId, String productId);
 }

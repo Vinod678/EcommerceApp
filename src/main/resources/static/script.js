@@ -47,25 +47,76 @@
 
                         const loggedIn = localStorage.getItem('loggedIn');
 
-                        if(loggedIn){
-                            addButton.innerText = 'Add To Cart';
-                            orderButton.innerText = 'Buy';
-                        addButton.addEventListener('click', () => {
-                            addToCartItem(product.productID,product.productName,product.productDescription,product.productPrice,product.noOfProductsAvailable,product.productImage);
-                        });
+                        if (loggedIn) {
+                            const userId = localStorage.getItem('userId');
+                            const productId = product.productID;
 
-                        orderButton.addEventListener('click', function(){
-                                                // Construct the URL with product details as query parameters
-                                                const orderItemUrl = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.productID}&productName=${encodeURIComponent(product.productName)}&productPrice=${product.productPrice}`;
-                                                window.location.href = orderItemUrl;
-                                            });
+                            // Check if the product is in the cart
+                            fetch(`http://localhost:8080/cart/checkIfProductInCart/${userId}?productId=${productId}`)
+                                .then(response => response.json())
+                                .then(exists => {
+                                    if (exists) {
+                                        addButton.innerText = 'Remove From Cart';
+                                         addButton.addEventListener('click', () => {
+                                         removeFromCart(userId, productId);
+                                         });
+                                    } else {
+                                        addButton.innerText = 'Add To Cart';
+                                        addButton.addEventListener('click', () => {
+                                            addToCartItem(product.productID, product.productName, product.productDescription, product.productPrice, product.noOfProductsAvailable, product.productImage);
+                                        });
+                                    }
+                                })
+                                .catch(error => console.error('Error checking product in cart:', error));
+
+                         orderButton.innerText = 'Buy';
+                                                orderButton.addEventListener('click', function () {
+                                                    // Construct the URL with product details as query parameters
+                                                    const orderItemUrl = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.productID}&productName=${encodeURIComponent(product.productName)}&productPrice=${product.productPrice}`;
+                                                    window.location.href = orderItemUrl;
+                                                });
+
+                        } else {
+                            addButton.innerText = 'Login to Add To Cart';
+                            addButton.addEventListener('click', () => {
+                                alert('Please login to add items to cart.');
+                            });
+
+
+                        orderButton.innerText = 'Buy';
+                        orderButton.addEventListener('click', () => {
+                                                        alert('Please login to Buy Products.');
+                                                    });
+                        }
+
                         productCard.appendChild(addButton);
                         productCard.appendChild(orderButton);
-                        }
                         productList.appendChild(productCard);
                     });
                 })
                 .catch(error => console.error('Error:', error));
+        }
+
+        function removeFromCart(userId, productId) {
+            // Make a POST request to remove the item from the cart
+            const url = `http://localhost:8080/cart/clearCartItemByProductId/${userId}?productId=${productId}`;
+
+            fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    productId: productId
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Item removed from cart:', data);
+                    // Refresh the product list after removing from cart
+                    fetchProducts();
+                })
+                .catch(error => console.error('Error removing item from cart:', error));
         }
 
 

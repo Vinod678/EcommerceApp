@@ -71,6 +71,20 @@ public class CartTableServiceImpl implements CartTableService {
     }
 
     @Override
+    public void clearCartSingleItemByProductId(Long userId, String productId) {
+
+        List<CartTable> cartItems = cartRepository.findByUserId(userId);
+
+        // Check if any cart item contains the specified product
+        for (CartTable cartItem : cartItems) {
+            if (cartItem.getProduct().getProductID().equals(productId)) {
+                cartRepository.deleteById(cartItem.getCartID());
+            }
+        }
+        System.out.println("deleting using productID");
+    }
+
+    @Override
     public void clearCart(Long userId) {
         List<CartTable> cartItems = cartRepository.findByUserId(userId);
         cartRepository.deleteAll(cartItems);
@@ -101,6 +115,20 @@ public class CartTableServiceImpl implements CartTableService {
         System.out.println("subTotal" + subTotal);
 
         return subTotal;
+    }
+
+    @Override
+    public Boolean checkIfProductInCart(Long userId, String productId) {
+        // Retrieve cart items for the given user
+        List<CartTable> cartItems = cartRepository.findByUserId(userId);
+
+        // Check if any cart item contains the specified product
+        for (CartTable cartItem : cartItems) {
+            if (cartItem.getProduct().getProductID().equals(productId)) {
+                return true; // Product is in the cart
+            }
+        }
+        return false; // Product is not in the cart
     }
 
 }

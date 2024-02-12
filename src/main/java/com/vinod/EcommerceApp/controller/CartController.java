@@ -66,6 +66,20 @@ public class CartController {
         return ResponseEntity.ok("Cart item cleared successfully");
     }
 
+    @GetMapping("/checkIfProductInCart/{userId}")
+    public ResponseEntity<Boolean> checkIfProductInCart(@PathVariable Long userId, @RequestParam String productId) {
+        Boolean isInCart = cartTableService.checkIfProductInCart(userId, productId);
+        return ResponseEntity.ok(isInCart);
+//        http://localhost:8080/cart/checkIfProductInCart/7?productId=44
+    }
+
+    @DeleteMapping("/clearCartItemByProductId/{userId}")
+    public ResponseEntity<String> clearCartItem(@PathVariable Long userId, @RequestParam String productId) {
+        cartTableService.clearCartSingleItemByProductId(userId,productId);
+        return ResponseEntity.ok("Cart item cleared successfully");
+        //        http://localhost:8080/cart/clearCartItemByProductId/7?productId=44
+    }
+
     @GetMapping("/subTotalAmount")
     public ResponseEntity<Double> subTotalAmount(@RequestParam Long userId) {
         Double subTotalCost = cartTableService.subTotalCost(userId);
