@@ -50,42 +50,72 @@
                         if (loggedIn) {
                             const userId = localStorage.getItem('userId');
                             const productId = product.productID;
+                            const productQuantity = product.noOfProductsAvailable;
+                            console.log('productQuantity :', productQuantity);
+                            console.log('productId :', productId);
+
+                            // Define functions for adding and removing items from the cart
+                            function addToCartHandler(userId, productId, addButton) {
+                                addToCartItem(productId, /* other product details */);
+                                addButton.innerText = 'Remove From Cart';
+                                addButton.removeEventListener('click', addToCartHandler); // Remove the current event listener
+                                addButton.addEventListener('click', () => removeFromCartHandler(userId, productId, addButton)); // Add a new event listener for removing from cart
+                            }
+
+                            function removeFromCartHandler(userId, productId, addButton) {
+                                removeFromCart(userId, productId);
+                                addButton.innerText = 'Add To Cart';
+                                addButton.removeEventListener('click', removeFromCartHandler); // Remove the current event listener
+                                addButton.addEventListener('click', () => addToCartHandler(userId, productId, addButton)); // Add a new event listener for adding to cart
+                            }
 
                             // Check if the product is in the cart
                             fetch(`http://localhost:8080/cart/checkIfProductInCart/${userId}?productId=${productId}`)
                                 .then(response => response.json())
                                 .then(exists => {
-                                    if (exists) {
+                                    if (exists && productQuantity > 0) {
+
                                         addButton.innerText = 'Remove From Cart';
-                                         addButton.addEventListener('click', () => {
-                                         removeFromCart(userId, productId);
-                                         });
-                                    } else {
+                                        addButton.addEventListener('click', () => removeFromCartHandler(userId, productId, addButton));
+                                    } else if (productQuantity > 0) {
                                         addButton.innerText = 'Add To Cart';
-                                        addButton.addEventListener('click', () => {
-                                            addToCartItem(product.productID, product.productName, product.productDescription, product.productPrice, product.noOfProductsAvailable, product.productImage);
-                                        });
+                                        addButton.addEventListener('click', () => addToCartHandler(userId, productId, addButton));
+                                    }
+                                    else {
+                                        // Product is out of stock, handle accordingly
+                                        addButton.innerText = 'Out of Stock';
+                                        addButton.disabled = true;
+                                        orderButton.disable=true;
                                     }
                                 })
                                 .catch(error => console.error('Error checking product in cart:', error));
+                        // Enable or disable the Buy button based on product availability
+                        if (productQuantity > 0) {
+                            orderButton.innerText = 'Buy';
+                            orderButton.addEventListener('click', function () {
+                                // Construct the URL with product details as query parameters
+                                const orderItemUrl = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.productID}&productName=${encodeURIComponent(product.productName)}&productPrice=${product.productPrice}`;
+                                window.location.href = orderItemUrl;
+                            });
+                        } else {
+                             // Hide the entire button if it's out of stock
+                                orderButton.style.display = 'none';
+                            }
 
-                         orderButton.innerText = 'Buy';
-                                                orderButton.addEventListener('click', function () {
-                                                    // Construct the URL with product details as query parameters
-                                                    const orderItemUrl = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.productID}&productName=${encodeURIComponent(product.productName)}&productPrice=${product.productPrice}`;
-                                                    window.location.href = orderItemUrl;
-                                                });
 
                         } else {
-                            addButton.innerText = 'Login to Add To Cart';
-                            addButton.addEventListener('click', () => {
-                                alert('Please login to add items to cart.');
-                            });
+                              addButton.innerText = 'Add To Cart';
+                              addButton.addEventListener('click', () => {
+                                  // Show login popup when the button is clicked
+                                  document.getElementById('loginPopup').style.display = 'block';
+                              });
+
 
 
                         orderButton.innerText = 'Buy';
                         orderButton.addEventListener('click', () => {
-                                                        alert('Please login to Buy Products.');
+                        // Show login popup when the button is clicked
+                        document.getElementById('loginPopup').style.display = 'block';
                                                     });
                         }
 
