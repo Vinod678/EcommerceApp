@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <p>Shipping Address: ${order.shippingAddress}</p>
                 <p>Payment Method: ${order.paymentMethod}</p>
                 <button class="trackButton" data-order-id="${order.orderId}">Track</button>
-                <button class="cancelButton" data-order-id="${order.orderId}">Cancel</button>
+                <button class="cancelButton" data-order-id="${order.orderId}">Cancel Order</button>
                 <hr>
             `;
             orderListElement.appendChild(orderItem);
