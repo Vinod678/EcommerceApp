@@ -58,7 +58,13 @@ document.addEventListener("DOMContentLoaded", function() {
                                <p>Quantity: <span id="modalQuantity">${quantity}</span></p>
                                <p>Total Price: <span id="modalTotalPrice">$${totalCost}</span></p>
                                <button id="placeOrderButton">Place Order</button>
+
                            `;
+                           placeOrderButton.addEventListener('click', function () {
+                              // Construct the URL with product details as query parameters
+                              const orderSummaryUrl = `http://localhost:63342/EcommerceApp/static/orderSummary.html?productId=${product.productID}&productName=${product.productName}`;
+                              window.location.href = orderSummaryUrl;
+                          });
                        };
 
 
@@ -156,4 +162,18 @@ document.addEventListener("DOMContentLoaded", function() {
             return { quantity, totalCost };
         }
 
+
+        // Function to check if the user is logged in , If not loggedIn it will redirect to homepage
+        function isUserLoggedIn() {
+            // Retrieve the login status from localStorage
+            const loggedIn = localStorage.getItem('loggedIn');
+            // Check if the user is logged in based on the stored value
+            return loggedIn === 'true';
+        }
+
+        // Check if the user is logged in when the page loads
+        if (!isUserLoggedIn()) {
+            // Redirect to the homepage if the user is not logged in
+            window.location.href = "http://localhost:63342/EcommerceApp/static/index.html";
+        }
 });

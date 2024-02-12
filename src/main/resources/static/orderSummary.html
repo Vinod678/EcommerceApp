@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Summary</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="orderSummaryScript.js" defer></script>
+</head>
+<body>
+
+<h1>Order Summary</h1>
+
+<!-- Order Summary Section -->
+<div id="orderSummary">
+  <div class="product">
+    <h3>Product Name</h3>
+    <p>Quantity: <span id="quantity_productId"></span></p>
+    <p>Total Cost: <span id="totalCost_productId"></span></p>
+  </div>
+
+  <!-- Shipping Information -->
+  <div id="shippingInfo">
+    <h2>Shipping Information</h2>
+    <!-- Display shipping information -->
+    <p>User Email: <span id="userEmail"></span></p>
+    <p>User Name: <span id="userName"></span></p>
+    <p>User Phone Number: <span id="userPhoneNumber"></span></p>
+    <p>User Address: <span id="userAddress"></span></p>
+  </div>
+
+  <!-- Payment Method (Optional) -->
+  <div id="paymentMethod">
+    <h2>Payment Method</h2>
+    <!-- Display multiple payment options and option to select payment method -->
+    <div id="paymentOptions">
+      <label for="creditCard">Credit Card</label>
+      <input type="radio" id="creditCard" name="paymentOption" value="Credit Card">
+      <br>
+      <label for="paypal">PayPal</label>
+      <input type="radio" id="paypal" name="paymentOption" value="Pay Pal">
+      <br>
+      <label for="cashOnDelivery">Cash On Delivery</label>
+      <input type="radio" id="cashOnDelivery" name="paymentOption" value="Cash On Delivery">
+    </div>
+    <button id="selectPaymentButton">Select Payment Method</button>
+  </div>
+
+
+  <!-- Buttons for Navigation -->
+  <div id="navigationButtons">
+    <!-- Button to go back and make changes to the order -->
+    <button id="editOrderButton">Edit Order</button>
+    <!-- Button to proceed to the final step of placing the order -->
+    <button id="placeOrderButton">Place Order</button>
+  </div>
+</div>
+
+</body>
+</html>
+

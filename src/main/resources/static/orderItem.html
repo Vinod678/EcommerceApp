@@ -12,22 +12,16 @@
 </head>
 <body>
 
-<!--<h1 style="color:Red ;Font-size:60px" ; align="center"> <a style="text-decoration:none;" href="http://localhost:63342/EcommerceApp/static/index.html">SuperCart</a></h1>-->
 <h1 style="color: red; font-size: 60px; text-align: center;"><a style="text-decoration: none;" href="http://localhost:63342/EcommerceApp/static/index.html">SuperCart</a></h1>
-
-
-
-
 <h1>Order Details</h1>
 
 <div id="productDetails">
     <!-- Product details will be displayed here -->
 </div>
 
-
 <div style="display: flex; align-items: center; font-size: 16px;">
     <h3>Quantity:</h3>
-    <button id="minus"; aria-label="Decrease quantity">−</button>
+    <button id="minus" aria-label="Decrease quantity">−</button>
     <input type="number" value="1" id="input" min="0" max="20" style="width: 50px; text-align: center;">
     <button id="plus" aria-label="Increase quantity">+</button>
 </div>
@@ -35,8 +29,18 @@
 <div style="display: flex; align-items: center; font-size: 16px;">
 <h3>Total Cost : </h3> <h3 id="total-value"></h3>
 </div>
-<button id="placeOrderButton">Place Order</button>
+<button id="reviewOrderButton">Review Order</button>
 
+<!-- Modal popup for order review -->
+<div id="orderReviewModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Review Order</h2>
+        <div id="orderReviewContent">
+            <!-- Order review content will be displayed here -->
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

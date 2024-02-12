@@ -28,6 +28,17 @@ public class ProductController {
         logger.info("Products in Table " + productTables);
         return ResponseEntity.ok(productTables);
     }
+    @GetMapping("/getProductById")
+    public ResponseEntity<ProductTable> getProductById(@RequestParam String productId) {
+        ProductTable product = productTableService.getProductById(productId);
+        if (product != null) {
+            logger.info("Product found with ID: " + productId);
+            return ResponseEntity.ok(product);
+        } else {
+            logger.warn("Product not found with ID: " + productId);
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 
     @PostMapping

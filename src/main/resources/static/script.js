@@ -94,7 +94,7 @@
                             orderButton.innerText = 'Buy';
                             orderButton.addEventListener('click', function () {
                                 // Construct the URL with product details as query parameters
-                                const orderItemUrl = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.productID}&productName=${encodeURIComponent(product.productName)}&productPrice=${product.productPrice}`;
+                                const orderItemUrl = `http://localhost:63342/EcommerceApp/static/orderItem.html?productId=${product.productID}`;
                                 window.location.href = orderItemUrl;
                             });
                         } else {
@@ -478,4 +478,30 @@ updateCustomerDetailsForm.addEventListener('submit', function(event) {
         console.error('Error updating details:', error);
         alert('An error occurred while updating details. Please try again.');
     });
+
+
+
+        // Function to check if the user is logged in , If not loggedIn it will redirect to homepage
+        function isUserLoggedIn() {
+            // Retrieve the login status from localStorage
+            const loggedIn = localStorage.getItem('loggedIn');
+            // Check if the user is logged in based on the stored value
+            return loggedIn === 'true';
+        }
+
+        // Check if the user is logged in when the page loads
+        if (!isUserLoggedIn()) {
+            // Redirect to the homepage if the user is not logged in
+            window.location.href = "http://localhost:63342/EcommerceApp/static/index.html";
+        }
 });
+
+
+
+//Order Track
+document.addEventListener("DOMContentLoaded", function() {
+        const orderTrackButton = document.getElementById('orderTrack');
+        orderTrackButton.addEventListener('click', function() {
+            window.location.href = 'http://localhost:63342/EcommerceApp/static/orderTrack.html';
+        });
+    });

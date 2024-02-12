@@ -64,6 +64,21 @@
                 .then(data => console.log('Item removed from cart:', data))
                 .catch(error => console.error('Error removing item from cart:', error));
         }
+
+
+        // Function to check if the user is logged in , If not loggedIn it will redirect to homepage
+        function isUserLoggedIn() {
+            // Retrieve the login status from localStorage
+            const loggedIn = localStorage.getItem('loggedIn');
+            // Check if the user is logged in based on the stored value
+            return loggedIn === 'true';
+        }
+
+        // Check if the user is logged in when the page loads
+        if (!isUserLoggedIn()) {
+            // Redirect to the homepage if the user is not logged in
+            window.location.href = "http://localhost:63342/EcommerceApp/static/index.html";
+        }
     });
 
 
