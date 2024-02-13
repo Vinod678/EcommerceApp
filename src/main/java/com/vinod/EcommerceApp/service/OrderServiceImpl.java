@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -75,6 +76,22 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void deleteOrder(Long orderId) {
         orderRepository.deleteById(orderId);
+    }
+    @Override
+    public boolean cancelOrder(Long orderId) {
+        //Retrieve the order from the database
+        Optional<OrderTable> optionalOrder = orderRepository.findById(orderId);
+
+        // Check if the order exists
+        if (optionalOrder.isPresent()) {
+            OrderTable order = optionalOrder.get();
+        // Update the status of the order to "Canceled"
+            order.setStatus("Canceled");
+            orderRepository.save(order);
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

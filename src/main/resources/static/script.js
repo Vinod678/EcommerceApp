@@ -299,7 +299,8 @@ registerForm.addEventListener('submit', function(event) {
             alert('User registered successfully.');
             document.getElementById('registerPopup').style.display = 'none'; // Hide the registration popup
         } else {
-            alert('Failed to register user. Please try again.');
+            document.getElementById('emailError').textContent = 'User already exists. Please use a different email.';
+//            alert('User Already Exists ,Use different Email');
         }
     })
     .catch(error => {
@@ -342,12 +343,13 @@ loginForm.addEventListener('submit', function(event) {
     })
     .then(response => {
         if (response.ok) {
-            alert('Login successful.');
+//            alert('Login successful.');
             document.getElementById('loginPopup').style.display = 'none'; // Hide the login popup
             updateUIAfterLogin(emailInput.trim()); // Pass the email address without accessing .value
             window.location.reload(); // Refresh the page after successful login
         } else {
-            alert('Invalid username or password.');
+             document.getElementById('emailOrPasswordError').textContent = 'Invalid username or password';
+//            alert('Invalid username or password.');
         }
     })
     .catch(error => {

@@ -55,6 +55,16 @@ public class OrderController {
         List<OrderTable> orders = orderService.getOrdersByUserId(userId);
         return ResponseEntity.ok(orders);
     }
+    @DeleteMapping("/cancelOrder/{orderId}")
+    public ResponseEntity<String> cancelOrder(@PathVariable Long orderId) {
+        // Logic to update the order status to "Canceled" in the database
+        boolean success = orderService.cancelOrder(orderId);
+        if (success) {
+            return ResponseEntity.ok("Order canceled successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to cancel order");
+        }
+    }
 
 
 }

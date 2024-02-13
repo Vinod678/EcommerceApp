@@ -13,4 +13,5 @@ public interface OrderService {
     //When order placed through cart checkOut
     List<OrderTable> createOrders(List<OrderTable> orders);
     void deleteOrder(Long orderId);
+    boolean cancelOrder(Long orderId);
 }
