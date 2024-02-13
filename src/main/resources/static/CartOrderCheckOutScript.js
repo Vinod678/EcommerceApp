@@ -110,6 +110,7 @@ fetch(apiUrl)
                             throw new Error('Failed to place order');
                         }
                         alert('Order placed successfully!');
+                        deleteAllProducts();
                         window.location.href = 'http://localhost:63342/EcommerceApp/static/orderConfirmation.html';
                     })
                     .catch(error => {
@@ -121,10 +122,25 @@ fetch(apiUrl)
     });
 
 
-    console.log(shippingInfoContainer);
-    console.log(shippingInfoContainer.querySelector('#userName'));
-    console.log(shippingInfoContainer.querySelector('#userPhoneNumber'));
-    console.log(shippingInfoContainer.querySelector('#userAddress'));
+//    Clear Cart Function after successful Order Placed
+// Function to Delete All Products
+     function deleteAllProducts() {
+     const userId = localStorage.getItem('userId');
+     const url = `http://localhost:8080/cart/clearCart?userId=${userId}`
+            fetch(url, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                    location.reload();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
 
 //  Event listener for Edit Order button
     document.getElementById('EditOrder').addEventListener('click', function () {
