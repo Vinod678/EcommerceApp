@@ -163,3 +163,9 @@ window.onload = function() {
 
 
 
+
+ // Event listener to the "Check Out" button
+    document.getElementById('checkOut').addEventListener('click', function() {
+        // Redirect to the CartOrderCheckOut.html page
+        window.location.href = "http://localhost:63342/EcommerceApp/static/CartOrderCheckOut.html";
+    });

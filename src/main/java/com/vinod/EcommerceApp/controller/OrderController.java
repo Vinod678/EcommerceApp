@@ -25,6 +25,14 @@ public class OrderController {
         return ResponseEntity.ok("Order created successfully");
     }
 
+    //When order placed through cart checkOut
+    @PostMapping("/createOrders")
+    public ResponseEntity<String> createOrders(@RequestBody List<OrderTable> orders) {
+        orderService.createOrders(orders);
+        return ResponseEntity.ok("Orders created successfully");
+}
+
+
     @GetMapping("/{orderId}")
     public ResponseEntity<OrderTable> getOrderById(@PathVariable Long orderId) {
         OrderTable order = orderService.getOrderById(orderId);

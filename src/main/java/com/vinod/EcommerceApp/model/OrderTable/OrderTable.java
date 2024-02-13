@@ -23,11 +23,14 @@ public class OrderTable {
 
     private String status;
 
+    private String shippingName;
+
+    private String shippingPhoneNumber;
+
     private String shippingAddress;
 
     private String paymentMethod;
 
-    // Getters and setters
 
     public Long getOrderId() {
         return orderId;
@@ -91,6 +94,22 @@ public class OrderTable {
 
     public void setShippingAddress(String shippingAddress) {
         this.shippingAddress = shippingAddress;
+    }
+
+    public String getShippingName() {
+        return shippingName;
+    }
+
+    public void setShippingName(String shippingName) {
+        this.shippingName = shippingName;
+    }
+
+    public String getShippingPhoneNumber() {
+        return shippingPhoneNumber;
+    }
+
+    public void setShippingPhoneNumber(String shippingPhoneNumber) {
+        this.shippingPhoneNumber = shippingPhoneNumber;
     }
 
     public String getPaymentMethod() {

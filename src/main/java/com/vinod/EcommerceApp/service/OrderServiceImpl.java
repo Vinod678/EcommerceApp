@@ -8,6 +8,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -41,6 +42,18 @@ public class OrderServiceImpl implements OrderService {
 
         // Save the order
         return orderRepository.save(order);
+    }
+    @Override
+    @Transactional
+    public List<OrderTable> createOrders(List<OrderTable> orders) {
+        List<OrderTable> createdOrders = new ArrayList<>();
+        for (OrderTable order : orders) {
+            // Decrease product quantity for each order
+            decreaseProductQuantity(order.getProductId(), order.getQuantity());
+            // Save the order
+            createdOrders.add(orderRepository.save(order));
+        }
+        return createdOrders;
     }
 
     // Method to decrease product quantity

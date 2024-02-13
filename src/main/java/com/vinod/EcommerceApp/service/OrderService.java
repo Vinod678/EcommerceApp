@@ -10,5 +10,7 @@ public interface OrderService {
     OrderTable getOrderById(Long orderId);
     List<OrderTable> getOrdersByUserId(Long userId);
     OrderTable createOrder(OrderTable order);
+    //When order placed through cart checkOut
+    List<OrderTable> createOrders(List<OrderTable> orders);
     void deleteOrder(Long orderId);
 }

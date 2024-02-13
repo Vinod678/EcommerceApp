@@ -496,6 +496,22 @@ updateCustomerDetailsForm.addEventListener('submit', function(event) {
         }
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to check if the user is logged in
+    function isUserLoggedIn() {
+        // Retrieve the login status from localStorage
+        const loggedIn = localStorage.getItem('loggedIn');
+        // Check if the user is logged in based on the stored value
+        return loggedIn === 'true';
+    }
+
+    // Check if the user is logged in when the page loads
+    if (!isUserLoggedIn()) {
+        // Hide the "Track Orders" button if the user is not logged in
+        const orderTrackButton = document.getElementById('orderTrack');
+        orderTrackButton.style.display = 'none';
+    }
+});
 
 
 //Order Track
