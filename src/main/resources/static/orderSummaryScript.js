@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const totalCost = sessionStorage.getItem(`totalCost_${productId}`);
 
     // Display product name, quantity, and total cost
+    document.getElementById('quantity_productName').textContent = productName;
     document.getElementById('quantity_productId').textContent = quantity;
     document.getElementById('totalCost_productId').textContent = totalCost;
 

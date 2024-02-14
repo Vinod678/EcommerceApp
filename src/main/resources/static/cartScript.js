@@ -1,13 +1,8 @@
-
-
-
-
     //Cart Products Table will display
     document.addEventListener("DOMContentLoaded", function () {
         const productList = document.getElementById('cartList');
         const userId = localStorage.getItem('userId');
         const url = `http://localhost:8080/cart/getAllCartItems?userId=${userId}`;
-//        const url = `http://localhost:8080/users/getUserIdByUserEmail?userEmail=${userEmail}`;
 
         // Fetch products from the backend
         fetch(url)
@@ -52,6 +47,24 @@
                     productCard.appendChild(orderButton);
                     productList.appendChild(productCard);
                 });
+
+
+              // Calculate total count
+                 const totalCount = products.reduce((acc, item) => acc + item.quantity, 0);
+                 console.log('totalCount - ', totalCount);
+
+                if (totalCount == 0) {
+                    // If totalCount is 0, hide rightDev
+                    rightDev.style.display = 'none';
+                } else {
+                    // If totalCount is greater than 0, hide cartMessageNoProductsAvailable
+                    cartMessageNoProductsAvailable.style.display = 'none';
+                }
+
+                 // Update the content of the HTML element
+                 const totalItemsElement = document.getElementById('totalItems');
+                 totalItemsElement.textContent = `${totalCount} - Items`;
+
             })
             .catch(error => console.error('Error:', error));
 
@@ -83,27 +96,6 @@
 
 
 
-
-
-    document.addEventListener("DOMContentLoaded", function() {
-     const userId = localStorage.getItem('userId');
-            const url = `http://localhost:8080/cart/getAllCartItems?userId=${userId}`;
-        fetch(url)
-          .then(response => response.json())
-          .then(data => {
-            // Calculate total count
-            const totalCount = data.reduce((acc, item) => acc + item.quantity, 0);
-            console.log('totalCount - ', totalCount);
-
-            // Update the content of the HTML element
-            const totalItemsElement = document.getElementById('totalItems');
-            totalItemsElement.textContent = `Total Items In Cart - ${totalCount}`;
-          })
-          .catch(error => console.error('Error:', error));
-    });
-
-
-
     // Function to Delete All Products
      function deleteAllProducts() {
      const userId = localStorage.getItem('userId');
@@ -122,15 +114,6 @@
                 console.error('Error:', error);
             });
         }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -160,8 +143,6 @@ window.onload = function() {
     console.log('Window loaded. Fetching subtotal...');
     fetchSubTotal();
 };
-
-
 
 
  // Event listener to the "Check Out" button

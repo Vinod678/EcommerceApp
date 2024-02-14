@@ -5,34 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
     <link rel="stylesheet" href="style.css">
-<!--    <script src="script.js" defer></script>-->
+    <link rel="stylesheet" href="cartStyle.css">
     <script src="cartScript.js" defer></script>
 
 </head>
 <body>
 
-<h1 style="color:Red ;Font-size:60px" ; align="center"> <a style="text-decoration:none;" href="http://localhost:63342/EcommerceApp/static/index.html">SuperCart</a></h1>
-<h1 style="text-align:center;">Shopping Cart</h1>
+<h1 style="color: red; font-size: 60px; text-align: center;">
+    <a style="text-decoration: none;" href="http://localhost:63342/EcommerceApp/static/index.html">SuperCart</a>
+</h1>
 
-<h3 id="totalItems" style="text-align:right;"></h3>
-<button id="clearCart" onclick="deleteAllProducts()" style="float: right;  margin-bottom: 250px;">Clear Cart</button><br><br>
+<h1 style="text-align: center;">Shopping Cart</h1>
 
+<div style="display:flex-column" id="rightDev">
+    <div>
+        <button id="clearCart" onclick="deleteAllProducts()" style="float: right;">Clear Cart</button>
+    </div>
+    <div style="display: flex; float: right; font-size: 12px;">
+        <h2 style="margin: 0;">Sub Total (<span id="totalItems"></span>): $</h2>
+        <h2 id="Subtotal-value" style="margin: 0;"></h2>
+    </div>
+    <div style="float:right">
+        <button style="float:center" id="checkOut">Proceed to Buy Out</button>
+    </div>
+</div>
 
-<!--<h3 id="clearCart" style="text-align:right;"></h3>-->
-
-
+<div id="cartMessageNoProductsAvailable" style="text-align: center;">
+    <h2>No products added to the cart. Start shopping now!</h2>
+</div>
 
 <div id="cartList">
-</div>
-
-<div style="display: flex; float:right;">
-    <h2 style="float:center">Sub Total :  </h2>
-    <h2 id="Subtotal-value"></h2>
-</div>
-
-
-<div style="display: flex;">
-    <button style="float:center" id="checkOut">Check Out -->  </button>
 </div>
 </body>
 </html>
