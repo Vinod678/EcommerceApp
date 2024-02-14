@@ -5,48 +5,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CartOrderCheckOutStyle.css">
     <script src="CartOrderCheckOutScript.js" defer></script>
 </head>
 <body>
 
 <h1>Checkout</h1>
 
-<div id="cartItems">
-    <!-- Cart items will be displayed here -->
+<div id="leftDev">
+    <div id="cartItems">
+        <!-- Cart items will be displayed here -->
+    </div>
 </div>
 
-<div id="shippingInfo">
-    <h2>Shipping Information</h2>
-    <p id="userEmail">User Email: </p>
-    <p id="userEmailValue"></p>
-    <p id="userName">User Name: </p>
-    <p id="userNameValue"></p>
-    <p id="userPhoneNumber">User Phone Number: </p>
-    <p id="userPhoneNumberValue"></p>
-    <p id="userAddress">User Address: </p>
-    <p id="userAddressValue"></p>
-</div>
+<div id="rightDev">
+    <div id="shippingInfo">
+        <h2>Shipping Information</h2>
+        <div style="display:flex">
+            <p id="userEmail">User Email: </p>
+            <p id="userEmailValue"></p>
+        </div>
+        <div style="display:flex">
+            <p id="userName">User Name: </p>
+            <p id="userNameValue"></p>
+        </div>
+        <div style="display:flex">
+            <p id="userPhoneNumber">User Phone Number: </p>
+            <p id="userPhoneNumberValue"></p>
+        </div>
+        <div style="display:flex">
+            <p id="userAddress">User Address: </p>
+            <p id="userAddressValue"></p>
+        </div>
+    </div>
 
-<div id="totalPrice" style="display:flex">
-    <h2 id="total-Price">Total Price : </h2>
-    <h2 id="totalPriceValue"> </h2>
-</div>
+    <div id="totalPrice" style="display:flex">
+        <h2 id="total-Price">Total Price : </h2>
+        <h2 id="totalPriceValue"> </h2>
+    </div>
 
-<div id="paymentMethod">
-    <h2>Payment Method</h2>
-    <select id="paymentMethodSelect">
-        <option value="Credit Card">Credit Card</option>
-        <option value="PayPal">PayPal</option>
-        <option value="Cash On Delivery">Cash On Delivery</option>
-    </select>
-</div>
+    <div id="paymentMethod">
+        <h2>Payment Method</h2>
+        <select id="paymentMethodSelect">
+            <option value="Credit Card">Credit Card</option>
+            <option value="PayPal">PayPal</option>
+            <option value="Cash On Delivery">Cash On Delivery</option>
+        </select>
+    </div>
 
 
-<!-- Buttons for Navigation -->
-<div id="navigationButtons">
-    <button id="EditOrder">Edit Order</button>
-    <button id="placeOrderButton">Place Order</button>
+    <!-- Buttons for Navigation -->
+    <div id="navigationButtons">
+        <button id="EditOrder">Edit Order</button>
+        <button id="placeOrderButton">Place Order</button>
+    </div>
 </div>
 
 </body>

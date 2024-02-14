@@ -9,6 +9,15 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch(`http://localhost:8080/cart/getAllCartItems?userId=${userId}`)
         .then(response => response.json())
         .then(cartItems => {
+
+            //If total items in cart is zero , it will redirect to home page
+             const totalCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+             console.log('totalCount - ', totalCount);
+
+            if (totalCount == 0) {
+                window.location.href = 'http://localhost:63342/EcommerceApp/static/index.html';
+            }
+
             console.log('Cart items:', cartItems); // Log cartItems to inspect its structure
 
             // Ensure cartItems is an array before proceeding
@@ -20,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
             cartItems.forEach(item => {
                 const div = document.createElement('div');
                 div.innerHTML = `
-                    <h2>Product Name: ${item.product.productName}</h2>
+                    <p>Product Name: ${item.product.productName}<p>
                     <p>Product ID: ${item.product.productID}</p>
                     <p>Quantity: ${item.quantity}</p>
                     <p>Price: ${item.product.productPrice}</p>
@@ -127,7 +136,7 @@ fetch(apiUrl)
                     })
                     .catch(error => {
                         console.error('Error placing order:', error);
-                        alert('Failed to place order. Please try again later.');
+                        alert('Failed to place order. Currently product is Out of Stock.');
                     });
             })
             .catch(error => console.error('Error fetching cart items for order placement:', error));

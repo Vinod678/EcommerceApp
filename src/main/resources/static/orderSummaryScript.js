@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             console.error('Error placing order:', error);
             // Handle errors (e.g., display error message to user)
-            alert('Failed to place order. Please try again later.');
+            alert('Failed to place order. Currently product is Out of Stock.');
         });
     });
 
