@@ -23,7 +23,14 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch(apiUrl)
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                // If the response is not okay (404 Not Found), redirect to the homepage
+              if (response.status === 404) {
+                  alert('Please update your profile before placing an order.');
+                  window.location.href = 'http://localhost:63342/EcommerceApp/static/index.html';
+                    return; // Stop further processing
+                } else {
+                    throw new Error('Network response was not ok');
+                }
             }
             return response.json();
         })
