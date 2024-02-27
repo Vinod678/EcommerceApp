@@ -11,7 +11,7 @@
 <body>
 
 <h1>Checkout</h1>
-
+<div>
 <div id="leftDev">
     <div id="cartItems">
         <!-- Cart items will be displayed here -->
@@ -43,6 +43,13 @@
         <h2 id="total-Price">Total Price : </h2>
         <h2 id="totalPriceValue"> </h2>
     </div>
+    <div class="card coupons" id="card-coupons">
+        <label class="title">Apply coupons</label>
+        <form class="form">
+            <input type="text" placeholder="Apply your coupons here" class="input_field">
+            <button>Apply</button>
+        </form>
+    </div>
 
     <div id="paymentMethod">
         <h2>Payment Method</h2>
@@ -60,6 +67,6 @@
         <button id="placeOrderButton">Place Order</button>
     </div>
 </div>
-
+</div>
 </body>
 </html>

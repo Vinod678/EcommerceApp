@@ -43,7 +43,33 @@
                         productCard.className = 'product-card';
                         productCard.appendChild(img);
 
-                        productCard.innerHTML += `<p>${product.productID}</p><p>  ${product.productName}</p><p> Cost: ${product.productPrice}</p><p> Quantity: ${product.noOfProductsAvailable}</p>`;
+//                        productCard.innerHTML += `<p>${product.productID}</p><p>  ${product.productName}</p><p> Cost: ${product.productPrice}</p><p> Quantity: ${product.noOfProductsAvailable}</p>`;
+
+                        // Create and append <p> elements with specific IDs
+                        const productIdParagraph = document.createElement('p');
+                        productIdParagraph.id = 'productId';
+                        productIdParagraph.textContent = product.productID;
+                        productCard.appendChild(productIdParagraph);
+
+                        const productNameParagraph = document.createElement('p');
+                        productNameParagraph.id = 'productName';
+                        productNameParagraph.textContent = product.productName;
+                        productCard.appendChild(productNameParagraph);
+
+                        const productDescriptionParagraph = document.createElement('p');
+                        productDescriptionParagraph.id = 'productDescription';
+                        productDescriptionParagraph.textContent = product.productDescription;
+                        productCard.appendChild(productDescriptionParagraph);
+
+                        const productPriceParagraph = document.createElement('p');
+                        productPriceParagraph.id = 'productPrice';
+                        productPriceParagraph.textContent = ` ${product.productPrice}`;
+                        productCard.appendChild(productPriceParagraph);
+
+                        const productQuantityParagraph = document.createElement('p');
+                        productQuantityParagraph.id = 'productQuantity';
+                        productQuantityParagraph.textContent = `Quantity: ${product.noOfProductsAvailable}`;
+                        productCard.appendChild(productQuantityParagraph);
 
                         const loggedIn = localStorage.getItem('loggedIn');
 
@@ -69,6 +95,8 @@
                                 addButton.addEventListener('click', () => addToCartHandler(userId, productId, addButton)); // Add a new event listener for adding to cart
                             }
 
+                            // Check if the user ID is available
+                           if (userId) {
                             // Check if the product is in the cart
                             fetch(`http://localhost:8080/cart/checkIfProductInCart/${userId}?productId=${productId}`)
                                 .then(response => response.json())
@@ -89,6 +117,9 @@
                                     }
                                 })
                                 .catch(error => console.error('Error checking product in cart:', error));
+                                    } else {
+                                        console.error('User ID not found in local storage');
+                                    }
                         // Enable or disable the Buy button based on product availability
                         if (productQuantity > 0) {
                             orderButton.innerText = 'Buy';
