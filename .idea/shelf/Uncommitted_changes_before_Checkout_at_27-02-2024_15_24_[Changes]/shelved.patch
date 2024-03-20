@@ -1,0 +1,44 @@
+Index: src/main/resources/static/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/static/index.html b/src/main/resources/static/index.html
+--- a/src/main/resources/static/index.html	
++++ b/src/main/resources/static/index.html	
+@@ -1,5 +1,5 @@
+ <!DOCTYPE html>
+-<html lang="en">
++<html lang="en" xmlns="http://www.w3.org/1999/html">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@@ -9,6 +9,8 @@
+ </head>
+ <body>
+ 
++<!-- Navbar -->
++<nav class="navbar">
+ <div id="LoginButton">
+     <button id="login" style="float:right">User Login</button>
+ </div>
+@@ -18,8 +20,10 @@
+ </div>
+ 
+ 
+-<h1 style="color:Red; font-size:60px; text-align:center;">SuperCart</h1>
++<h1 style="color:Red; font-size:60px; text-align:center;margin-top: 24px;">SuperCart</h1>
++</nav>
+ 
++<div>
+ <h1>Product List</h1>
+ 
+ <label for="searchProduct">Search Products :</label>
+@@ -90,6 +94,6 @@
+     </form>
+ </div>
+ 
+-
++</div>
+ </body>
+ </html>

@@ -3,6 +3,7 @@ package com.vinod.EcommerceApp.service;
 import com.vinod.EcommerceApp.model.User.UserEntity;
 import com.vinod.EcommerceApp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -15,11 +16,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void registerUser(UserEntity user) {
-        // You can add logic for user validation before saving to the database
         // Check if the Email is unique
         if (userRepository.findByUserEmail(user.getUserEmail()) != null) {
             throw new RuntimeException("Email already exists. Please choose a different Email.");
         }
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = bCryptPasswordEncoder.encode(user.getPassword());
+        user.setPassword(hashedPassword);
         userRepository.save(user);
     }
 
@@ -29,7 +32,8 @@ public class UserServiceImpl implements UserService {
         UserEntity storedUser = userRepository.findByUserEmail(user.getUserEmail());
 
         // Check if the user exists and the provided password matches
-        return storedUser != null && storedUser.getPassword().equals(user.getPassword());
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return storedUser != null && bCryptPasswordEncoder.matches(user.getPassword(), storedUser.getPassword());
     }
     @Override
     public UserEntity getUserById(Long userId) {
