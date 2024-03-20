@@ -1,0 +1,164 @@
+[
+  {
+    "productID": "1",
+    "productName": "Cake - Pancake",
+    "productDescription": "",
+    "productPrice": "$2.53",
+    "noOfProductsAvailable": 0,
+    "productImage": "http://dummyimage.com/115x100.png/ff4444/ffffff",
+    "reviews": []
+  },
+  {
+    "productID": "101",
+    "productName": "Sandal Soaps",
+    "productDescription": "",
+    "productPrice": "$2.00",
+    "noOfProductsAvailable": 0,
+    "productImage": "https://www.shutterstock.com/image-photo/green-bar-soap-260nw-106301033.jpg",
+    "reviews": []
+  },
+  {
+    "productID": "111",
+    "productName": "Cake - Pancake",
+    "productDescription": "",
+    "productPrice": "$2.53",
+    "noOfProductsAvailable": 8,
+    "productImage": "http://dummyimage.com/115x100.png/ff4444/ffffff",
+    "reviews": []
+  },
+  {
+    "productID": "118",
+    "productName": "Beans - Fava, Canned",
+    "productDescription": "",
+    "productPrice": "$8.39",
+    "noOfProductsAvailable": 11,
+    "productImage": "http://dummyimage.com/103x100.png/dddddd/000000",
+    "reviews": []
+  },
+  {
+    "productID": "12",
+    "productName": "Cake - Pancake",
+    "productDescription": "",
+    "productPrice": "$2.53",
+    "noOfProductsAvailable": 0,
+    "productImage": "http://dummyimage.com/115x100.png/ff4444/ffffff",
+    "reviews": []
+  },
+  {
+    "productID": "2",
+    "productName": "Oil - Olive Bertolli",
+    "productDescription": "",
+    "productPrice": "$0.41",
+    "noOfProductsAvailable": 40,
+    "productImage": "http://dummyimage.com/108x100.png/dddddd/000000",
+    "reviews": []
+  },
+  {
+    "productID": "211",
+    "productName": "Oil - Olive Bertolli",
+    "productDescription": "",
+    "productPrice": "$0.41",
+    "noOfProductsAvailable": 40,
+    "productImage": "http://dummyimage.com/108x100.png/dddddd/000000",
+    "reviews": []
+  },
+  {
+    "productID": "24",
+    "productName": "Oil - Olive Bertolli",
+    "productDescription": "",
+    "productPrice": "$0.41",
+    "noOfProductsAvailable": 0,
+    "productImage": "http://dummyimage.com/108x100.png/dddddd/000000",
+    "reviews": []
+  },
+  {
+    "productID": "36",
+    "productName": "Coffee Beans - Fava, Canned",
+    "productDescription": "A coffee bean is the seed of the coffee plant. It's the part that gets roasted, and ground into the coffee granules you use to brew your cup of NESCAFÉ every day.",
+    "productPrice": "$8.39",
+    "noOfProductsAvailable": 13,
+    "productImage": "http://dummyimage.com/103x100.png/dddddd/000000",
+    "reviews": []
+  },
+  {
+    "productID": "37",
+    "productName": "Coffee Beans - Fava, Canned",
+    "productDescription": "A coffee bean is the seed of the coffee plant. It's the part that gets roasted, and ground into the coffee granules you use to brew your cup of NESCAFÉ every day.",
+    "productPrice": "$8.39",
+    "noOfProductsAvailable": 14,
+    "productImage": "http://dummyimage.com/103x100.png/dddddd/000000",
+    "reviews": []
+  },
+  {
+    "productID": "38",
+    "productName": "Coffee Beans - Fava, Canned",
+    "productDescription": "A coffee bean is the seed of the coffee plant. It's the part that gets roasted, and ground into the coffee granules you use to brew your cup of NESCAFÉ every day.",
+    "productPrice": "$8.39",
+    "noOfProductsAvailable": 14,
+    "productImage": "http://dummyimage.com/103x100.png/dddddd/000000",
+    "reviews": []
+  },
+  {
+    "productID": "39",
+    "productName": "Coffee Beans - Fava, Canned",
+    "productDescription": "A coffee bean is the seed of the coffee plant. It's the part that gets roasted, and ground into the coffee granules you use to brew your cup of NESCAFÉ every day.",
+    "productPrice": "$8.39",
+    "noOfProductsAvailable": 14,
+    "productImage": "http://dummyimage.com/103x100.png/dddddd/000000",
+    "reviews": []
+  },
+  {
+    "productID": "411",
+    "productName": "Beets - Mini Golden",
+    "productDescription": "",
+    "productPrice": "$8.93",
+    "noOfProductsAvailable": 67,
+    "productImage": "http://dummyimage.com/213x100.png/dddddd/000000",
+    "reviews": []
+  },
+  {
+    "productID": "44",
+    "productName": "Beets - Mini Golden",
+    "productDescription": "",
+    "productPrice": "$8.93",
+    "noOfProductsAvailable": 42,
+    "productImage": "http://dummyimage.com/213x100.png/dddddd/000000",
+    "reviews": []
+  },
+  {
+    "productID": "88",
+    "productName": "Sandal Soaps",
+    "productDescription": "",
+    "productPrice": "$8.39",
+    "noOfProductsAvailable": 0,
+    "productImage": "http://dummyimage.com/103x100.png/dddddd/000000",
+    "reviews": []
+  },
+  {
+    "productID": "89",
+    "productName": "Beans - Fava, Canned",
+    "productDescription": "",
+    "productPrice": "$8.39",
+    "noOfProductsAvailable": 9,
+    "productImage": "http://dummyimage.com/103x100.png/dddddd/000000",
+    "reviews": []
+  },
+  {
+    "productID": "911",
+    "productName": "Beans - Fava, Canned",
+    "productDescription": "",
+    "productPrice": "$8.39",
+    "noOfProductsAvailable": 13,
+    "productImage": "http://dummyimage.com/103x100.png/dddddd/000000",
+    "reviews": []
+  },
+  {
+    "productID": "99",
+    "productName": "Beans - Fava, Canned",
+    "productDescription": "",
+    "productPrice": "$8.39",
+    "noOfProductsAvailable": 11,
+    "productImage": "http://dummyimage.com/103x100.png/dddddd/000000",
+    "reviews": []
+  }
+]

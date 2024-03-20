@@ -1,6 +1,7 @@
 package com.vinod.EcommerceApp.model.User;
 
 import com.vinod.EcommerceApp.model.CartTable.CartTable;
+import com.vinod.EcommerceApp.model.ProductTable.ProductReview;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -19,6 +20,9 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<CartTable> cartEntries;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<ProductReview> productReviews;
 
     // Getters and setters
     public Long getId() {
@@ -51,5 +55,13 @@ public class UserEntity {
 
     public void setCartEntries(Set<CartTable> cartEntries) {
         this.cartEntries = cartEntries;
+    }
+
+    public Set<ProductReview> getProductReviews() {
+        return productReviews;
+    }
+
+    public void setProductReviews(Set<ProductReview> productReviews) {
+        this.productReviews = productReviews;
     }
 }

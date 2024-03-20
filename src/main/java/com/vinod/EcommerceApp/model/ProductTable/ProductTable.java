@@ -17,10 +17,16 @@ public class ProductTable {
     private int noOfProductsAvailable;
     private String productImage;
 
+    @Enumerated(EnumType.STRING)
+    private Category category;
 
     @ManyToMany(mappedBy = "product", cascade = CascadeType.ALL)
     @JsonBackReference
     private Set<CartTable> carts;
+
+    @ManyToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private Set<ProductReview> productReviews;
 
 
     public Set<CartTable> getCarts() {
@@ -29,6 +35,14 @@ public class ProductTable {
 
     public void setCarts(Set<CartTable> carts) {
         this.carts = carts;
+    }
+
+    public Set<ProductReview> getProductReviews() {
+        return productReviews;
+    }
+
+    public void setProductReviews(Set<ProductReview> productReviews) {
+        this.productReviews = productReviews;
     }
 
     public String getProductImage() {
@@ -77,5 +91,12 @@ public class ProductTable {
 
     public void setNoOfProductsAvailable(int noOfProductsAvailable) {
         this.noOfProductsAvailable = noOfProductsAvailable;
+    }
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

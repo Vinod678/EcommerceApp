@@ -1,10 +1,12 @@
 package com.vinod.EcommerceApp.service;
 
+import com.vinod.EcommerceApp.model.ProductTable.Category;
 import com.vinod.EcommerceApp.model.ProductTable.ProductTable;
 import com.vinod.EcommerceApp.repository.ProductTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -22,6 +24,7 @@ public class ProductTableServiceImpl implements ProductTableService {
     public void createProduct(ProductTable productTable) {
         //logger.info("Product Table Created : " + productTable);
         validateProductData(productTable);
+//        validateCategory(productTable.getCategory()); // Validate category before saving
         duplicates(productTable);
         productTableRepository.save(productTable);
     }
@@ -34,6 +37,9 @@ public class ProductTableServiceImpl implements ProductTableService {
         }
         if (productTable.getProductID() == null || productTable.getProductID().isEmpty()) {
             throw new IllegalArgumentException("Product ID cannot be empty");
+        }
+        if (productTable.getCategory() == null || !Arrays.asList(Category.values()).contains(productTable.getCategory())) {
+            throw new IllegalArgumentException("Invalid Category");
         }
     }
 
@@ -50,7 +56,6 @@ public class ProductTableServiceImpl implements ProductTableService {
     @Override
     public void createProducts(List<ProductTable> productTables) {
         for (ProductTable productTable : productTables) {
-            // Perform any validation or processing as needed
             createProduct(productTable);
         }
     }
