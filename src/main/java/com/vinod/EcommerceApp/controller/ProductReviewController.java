@@ -1,10 +1,14 @@
 package com.vinod.EcommerceApp.controller;
 
+import com.vinod.EcommerceApp.DTO.ProductReviewDTO;
+import com.vinod.EcommerceApp.DTO.ProductReviewResponseDTO;
 import com.vinod.EcommerceApp.model.CartTable.CartTable;
 import com.vinod.EcommerceApp.model.ProductTable.ProductReview;
 import com.vinod.EcommerceApp.model.User.UserEntity;
+import com.vinod.EcommerceApp.model.User.UserProfileEntity;
 import com.vinod.EcommerceApp.service.CartTableService;
 import com.vinod.EcommerceApp.service.ProductReviewService;
+import com.vinod.EcommerceApp.service.UserProfileService;
 import com.vinod.EcommerceApp.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -27,6 +32,8 @@ public class ProductReviewController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserProfileService userProfileService;
 
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
@@ -44,17 +51,52 @@ public class ProductReviewController {
     }
 
 
-//    @PostMapping("/add")
-//    public ResponseEntity<ProductReview> addReview(@RequestBody ProductReview productReview) {
-//        ProductReview addedReview = productReviewService.addReview(productReview);
-//        return ResponseEntity.ok(addedReview);
-//    }
-
     @GetMapping("/get")
-    public ResponseEntity<List<ProductReview>> getReviewsForProduct(@RequestParam String productId) {
+    public ResponseEntity<ProductReviewResponseDTO> getReviewsForProduct(@RequestParam String productId) {
         List<ProductReview> reviews = productReviewService.getReviewsForProduct(productId);
-        return ResponseEntity.ok(reviews);
+
+        // Calculate total number of reviews
+        int totalReviews = reviews.size();
+
+        // Calculate average rating
+        double averageRating = 0;
+        if (!reviews.isEmpty()) {
+            int sumRatings = reviews.stream().mapToInt(ProductReview::getRating).sum();
+            averageRating = (double) sumRatings / totalReviews;
+        }
+
+        // Convert reviews to DTOs
+        List<ProductReviewDTO> reviewDTOs = reviews.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+
+        // Create response DTO
+        ProductReviewResponseDTO responseDTO = new ProductReviewResponseDTO();
+        responseDTO.setTotalReviews(totalReviews);
+        responseDTO.setAverageRating(averageRating);
+        responseDTO.setReviews(reviewDTOs);
+
+        return ResponseEntity.ok(responseDTO);
     }
 
-    // Other controller methods for managing product reviews
+
+    private ProductReviewDTO convertToDTO(ProductReview review) {
+        ProductReviewDTO dto = new ProductReviewDTO();
+        dto.setReviewID(review.getReviewID());
+        dto.setRating(review.getRating());
+        dto.setReviewText(review.getReviewText());
+        dto.setProductID(review.getProduct().getProductID());
+        dto.setUserID(review.getUser().getId());
+
+        // Fetch UserProfileEntity associated with the UserEntity
+        UserProfileEntity userProfile = userProfileService.getUserProfileByEmail(review.getUser().getUserEmail());
+        if (userProfile != null) {
+            dto.setUserName(userProfile.getUserName());
+        } else {
+            // Set default value or handle the case when UserProfileEntity is null
+            dto.setUserName("Unknown");
+        }
+        return dto;
+    }
+
 }

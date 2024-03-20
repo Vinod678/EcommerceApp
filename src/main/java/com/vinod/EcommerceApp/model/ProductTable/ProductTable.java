@@ -25,7 +25,7 @@ public class ProductTable {
     private Set<CartTable> carts;
 
     @ManyToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    @JsonBackReference
+//    @JsonBackReference
     private Set<ProductReview> productReviews;
 
 
