@@ -75,4 +75,8 @@ public class ProductTableServiceImpl implements ProductTableService {
     public List<ProductTable> getProduct() {
         return productTableRepository.findAll();
     }
+    @Override
+    public List<ProductTable> getProductByCategory(Category category) {
+        return productTableRepository.findByCategory(category);
+    }
 }

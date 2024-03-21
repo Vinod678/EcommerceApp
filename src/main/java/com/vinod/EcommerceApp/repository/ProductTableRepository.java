@@ -1,5 +1,6 @@
 package com.vinod.EcommerceApp.repository;
 
+import com.vinod.EcommerceApp.model.ProductTable.Category;
 import com.vinod.EcommerceApp.model.ProductTable.ProductTable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +15,6 @@ public interface ProductTableRepository extends JpaRepository<ProductTable, Inte
             "p.productName LIKE CONCAT('%',:query, '%')" +
             "Or p.productID LIKE CONCAT('%', :query, '%')")
     List<ProductTable> searchProducts(String query);
+
+    List<ProductTable> findByCategory(Category category);
 }

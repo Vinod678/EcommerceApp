@@ -2,6 +2,7 @@ package com.vinod.EcommerceApp.controller;
 
 import com.vinod.EcommerceApp.DTO.GetProductDTOResponse;
 import com.vinod.EcommerceApp.DTO.ReviewResponseDTO;
+import com.vinod.EcommerceApp.model.ProductTable.Category;
 import com.vinod.EcommerceApp.model.ProductTable.ProductTable;
 import com.vinod.EcommerceApp.service.ProductTableService;
 import org.slf4j.Logger;
@@ -33,17 +34,18 @@ public class ProductController {
         logger.info("Products in Table " + productTables);
         return ResponseEntity.ok(productTables);
     }
-//    @GetMapping("/getProductById")
-//    public ResponseEntity<ProductTable> getProductById(@RequestParam String productId) {
-//        ProductTable product = productTableService.getProductById(productId);
-//        if (product != null) {
-//            logger.info("Product found with ID: " + productId);
-//            return ResponseEntity.ok(product);
-//        } else {
-//            logger.warn("Product not found with ID: " + productId);
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
+    @GetMapping("/getByCategory")
+    public ResponseEntity<List<ProductTable>> getProductsByCategory(@RequestParam Category category) {
+        List<ProductTable> products = productTableService.getProductByCategory(category);
+        if (products.isEmpty()) {
+            logger.warn("No products found for category: " + category);
+            return ResponseEntity.notFound().build();
+        }
+        logger.info("Products found for category " + category + ": " + products);
+        return ResponseEntity.ok(products);
+    }
+
+
     @GetMapping("/getProductById")
     public ResponseEntity<GetProductDTOResponse> getProductById(@RequestParam String productId) {
         ProductTable product = productTableService.getProductById(productId);

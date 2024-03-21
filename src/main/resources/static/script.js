@@ -2,6 +2,38 @@
     document.addEventListener("DOMContentLoaded", function () {
         const productList = document.getElementById('productList');
         const searchForm = document.querySelector('form');
+         const categoriesDropdown = document.getElementById("categorySelect");
+
+        // Category enum
+        const Category = {
+            ELECTRONICS: "ELECTRONICS",
+            CLOTHING: "CLOTHING",
+            BOOKS: "BOOKS",
+            HOME_APPLIANCES: "HOME_APPLIANCES",
+            SPORTS: "SPORTS",
+            TOYS: "TOYS",
+            BEAUTY: "BEAUTY",
+            FOOD: "FOOD",
+            OTHER: "OTHER"
+        };
+        // Log the Category enum object
+        console.log('Category enum:', Category);
+
+        // Populate the dropdown with categories
+        const categories = Object.values(Category);
+        categories.forEach(category => {
+            const option = document.createElement("option");
+            option.value = category;
+            option.textContent = category;
+            categoriesDropdown.appendChild(option);
+        });
+
+        // Add event listener for dropdown change
+        categoriesDropdown.addEventListener("change", function () {
+            const selectedCategory = this.value;
+            // Call the fetchProducts function with selected category
+            fetchProducts('', selectedCategory);
+        });
 
         // Fetch all products initially
         fetchProducts();
@@ -16,12 +48,16 @@
             fetchProducts(query);
         });
 
-        function fetchProducts(query = '') {
+        function fetchProducts(query = '', category = '') {
             // Clear the existing product list
             productList.innerHTML = '';
 
             // Fetch products from the backend
-            const apiUrl = query ? `http://localhost:8080/products/search?query=${query}` : 'http://localhost:8080/products';
+            const apiUrl = query
+              ? `http://localhost:8080/products/search?query=${query}`
+              : category
+              ? `http://localhost:8080/products/getByCategory?category=${category}`
+              : 'http://localhost:8080/products';
 
             fetch(apiUrl)
                 .then(response => response.json())
