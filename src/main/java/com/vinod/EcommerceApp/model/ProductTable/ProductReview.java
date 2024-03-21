@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.vinod.EcommerceApp.model.User.UserEntity;
 import jakarta.persistence.*;
 
-
+import java.util.Date;
 
 
 @Entity
@@ -32,6 +32,9 @@ public class ProductReview {
 
     private int rating;
     private String reviewText;
+
+    @Column(name = "review_date")
+    private Date reviewDate;
 
     public Long getReviewID() {
         return reviewID;
@@ -71,5 +74,13 @@ public class ProductReview {
 
     public void setReviewText(String reviewText) {
         this.reviewText = reviewText;
+    }
+
+    public Date getReviewDate() {
+        return reviewDate;
+    }
+
+    public void setReviewDate(Date reviewDate) {
+        this.reviewDate = reviewDate;
     }
 }

@@ -1,9 +1,10 @@
 package com.vinod.EcommerceApp.DTO;
 
-public class ProductReviewDTO {
+public class ReviewDTO {
     private Long reviewID;
     private int rating;
     private String reviewText;
+    private String reviewDate;
     private String productID;
     private Long userID;
     private String userName;
@@ -31,6 +32,14 @@ public class ProductReviewDTO {
 
     public void setReviewText(String reviewText) {
         this.reviewText = reviewText;
+    }
+
+    public String getReviewDate() {
+        return reviewDate;
+    }
+
+    public void setReviewDate(String reviewDate) {
+        this.reviewDate = reviewDate;
     }
 
     public String getProductID() {

@@ -1,23 +1,22 @@
 package com.vinod.EcommerceApp.controller;
 
-import com.vinod.EcommerceApp.DTO.ProductReviewDTO;
-import com.vinod.EcommerceApp.DTO.ProductReviewResponseDTO;
-import com.vinod.EcommerceApp.model.CartTable.CartTable;
+import com.vinod.EcommerceApp.DTO.ReviewDTO;
+import com.vinod.EcommerceApp.DTO.ReviewResponseDTO;
 import com.vinod.EcommerceApp.model.ProductTable.ProductReview;
 import com.vinod.EcommerceApp.model.User.UserEntity;
 import com.vinod.EcommerceApp.model.User.UserProfileEntity;
-import com.vinod.EcommerceApp.service.CartTableService;
-import com.vinod.EcommerceApp.service.ProductReviewService;
+import com.vinod.EcommerceApp.service.ReviewService;
 import com.vinod.EcommerceApp.service.UserProfileService;
 import com.vinod.EcommerceApp.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,10 +24,10 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/product-reviews")
 @CrossOrigin(origins = "http://localhost:63342", maxAge = 3600)
-public class ProductReviewController {
+public class ReviewController {
 
     @Autowired
-    private ProductReviewService productReviewService;
+    private ReviewService reviewService;
 
     @Autowired
     private UserService userService;
@@ -40,20 +39,22 @@ public class ProductReviewController {
     @PostMapping("/addReview")
     public ResponseEntity<String> addReview(@RequestBody ProductReview productReview, @RequestParam Long userId) {
         try {
+            Date currentDate = new Date();
+            // Set the reviewDate field in the ProductReview object
+            productReview.setReviewDate(currentDate);
             UserEntity user = userService.getUserById(userId);
-            productReviewService.addReview(productReview, user);
+            reviewService.addReview(productReview, user);
             logger.info("product review given Successfully");
             return ResponseEntity.ok("product review given Successfully");
         } catch (IllegalArgumentException ex) {
-            // Handle exception
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error: " + ex.getMessage());
         }
     }
 
 
     @GetMapping("/get")
-    public ResponseEntity<ProductReviewResponseDTO> getReviewsForProduct(@RequestParam String productId) {
-        List<ProductReview> reviews = productReviewService.getReviewsForProduct(productId);
+    public ResponseEntity<ReviewResponseDTO> getReviewsForProduct(@RequestParam String productId) {
+        List<ProductReview> reviews = reviewService.getReviewsForProduct(productId);
 
         // Calculate total number of reviews
         int totalReviews = reviews.size();
@@ -66,12 +67,12 @@ public class ProductReviewController {
         }
 
         // Convert reviews to DTOs
-        List<ProductReviewDTO> reviewDTOs = reviews.stream()
+        List<ReviewDTO> reviewDTOs = reviews.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
 
         // Create response DTO
-        ProductReviewResponseDTO responseDTO = new ProductReviewResponseDTO();
+        ReviewResponseDTO responseDTO = new ReviewResponseDTO();
         responseDTO.setTotalReviews(totalReviews);
         responseDTO.setAverageRating(averageRating);
         responseDTO.setReviews(reviewDTOs);
@@ -80,11 +81,17 @@ public class ProductReviewController {
     }
 
 
-    private ProductReviewDTO convertToDTO(ProductReview review) {
-        ProductReviewDTO dto = new ProductReviewDTO();
+    private ReviewDTO convertToDTO(ProductReview review) {
+        ReviewDTO dto = new ReviewDTO();
         dto.setReviewID(review.getReviewID());
         dto.setRating(review.getRating());
         dto.setReviewText(review.getReviewText());
+
+
+        // Set reviewDate in DTO
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dto.setReviewDate(dateFormat.format(review.getReviewDate()));
+
         dto.setProductID(review.getProduct().getProductID());
         dto.setUserID(review.getUser().getId());
 

@@ -2,10 +2,10 @@ package com.vinod.EcommerceApp.DTO;
 
 import java.util.List;
 
-public class ProductReviewResponseDTO {
+public class ReviewResponseDTO {
     private double averageRating;
     private int totalReviews;
-    private List<ProductReviewDTO> reviews;
+    private List<ReviewDTO> reviews;
 
     public double getAverageRating() {
         return averageRating;
@@ -23,11 +23,11 @@ public class ProductReviewResponseDTO {
         this.totalReviews = totalReviews;
     }
 
-    public List<ProductReviewDTO> getReviews() {
+    public List<ReviewDTO> getReviews() {
         return reviews;
     }
 
-    public void setReviews(List<ProductReviewDTO> reviews) {
+    public void setReviews(List<ReviewDTO> reviews) {
         this.reviews = reviews;
     }
 }

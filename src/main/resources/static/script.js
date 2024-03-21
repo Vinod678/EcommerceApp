@@ -71,6 +71,32 @@
                         productQuantityParagraph.textContent = `Quantity: ${product.noOfProductsAvailable}`;
                         productCard.appendChild(productQuantityParagraph);
 
+
+                        img.onclick = function() {
+                                openProductPage(product.productID);
+                        };
+
+                        // Add onclick event to open product page when name is clicked
+                        productNameParagraph.onclick = function() {
+                            openProductPage(product.productID);
+                        };
+
+                        const productRating = document.createElement('p');
+                                        productRating.id = 'productRating';
+
+                                        // Fetch average rating for the product
+                                        fetch(`http://localhost:8080/product-reviews/get?productId=${product.productID}`)
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                const averageRating = data.averageRating;
+                                                // Set the text content of productRating paragraph with the average rating
+                                                productRating.textContent = `Rating: ${averageRating}`;
+                                            })
+                                            .catch(error => console.error('Error fetching product rating:', error));
+
+                                        // Append productRating to the productCard
+                                        productCard.appendChild(productRating);
+
                         const loggedIn = localStorage.getItem('loggedIn');
 
                         if (loggedIn) {
@@ -156,6 +182,14 @@
                     });
                 })
                 .catch(error => console.error('Error:', error));
+        }
+
+        function openProductPage(productId) {
+            // Construct the URL for the product page
+            var productUrl = 'http://localhost:63342/EcommerceApp/static/product.html?productId=' + productId;
+
+            // Open the product page in a new tab
+            window.open(productUrl, '_blank');
         }
 
         function removeFromCart(userId, productId) {
